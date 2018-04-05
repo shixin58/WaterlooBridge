@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="paihang_brand_comm_tab_btn">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">12.5dp</item>
+        <item name="android:paddingRight">12.5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/tab_selector</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:button">@null</item>
+    </style>
+
 </resources>
