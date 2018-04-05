@@ -26,5 +26,9 @@
         <activity android:name=".activities.DrawSmallIconActivity"
             android:screenOrientation="portrait"
             android:label="@string/draw_small_icon"/>
+
+        <activity android:name=".activities.CustomWidgetActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/custom_widget"/>
     </application>
 </manifest>

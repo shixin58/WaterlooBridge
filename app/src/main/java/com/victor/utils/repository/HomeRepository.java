@@ -2,6 +2,7 @@ package com.victor.utils.repository;
 
 import com.victor.utils.R;
 import com.victor.utils.ResUtils;
+import com.victor.utils.activities.CustomWidgetActivity;
 import com.victor.utils.activities.DrawSmallIconActivity;
 import com.victor.utils.activities.FollowAnimationActivity;
 import com.victor.utils.model.HomeModel;
@@ -20,6 +21,8 @@ public class HomeRepository {
         list.add(homeModel);
         HomeModel homeModel1 = new HomeModel(DrawSmallIconActivity.class, ResUtils.getString(R.string.draw_small_icon));
         list.add(homeModel1);
+        HomeModel homeModel2 = new HomeModel(CustomWidgetActivity.class, ResUtils.getString(R.string.custom_widget));
+        list.add(homeModel2);
         return list;
     }
 }

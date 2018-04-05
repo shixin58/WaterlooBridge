@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">VictorUtils</string>
+
     <string name="follow_animation">关注动画</string>
     <string name="draw_small_icon">绘制小icon</string>
+    <string name="custom_widget">自定义widget</string>
 
     <string name="dog">泰迪犬</string>
 </resources>
