@@ -1,10 +1,22 @@
 package com.victor.utils.specific;
 
+import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.support.constraint.ConstraintLayout;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
+import com.victor.utils.AppUtils;
+import com.victor.utils.PreferenceFinals;
+import com.victor.utils.PreferenceUtils;
+import com.victor.utils.R;
 import com.victor.utils.ResUtils;
 
 import java.util.List;
@@ -68,5 +80,85 @@ public class WidgetUtils {
                 }
             }
         });
+    }
+
+    /**
+     * 综述页加入清单提示，安装或升级到v9.0显示一次
+     */
+    public static PopupWindow initSerialFollowTip(Context context, final View parent) {
+        if(AppUtils.getVersionCode()==1
+                &&!PreferenceUtils.getBoolean(PreferenceFinals.SERIAL_SUMMARY_INVENTORY_TIP)) {
+            final View popupView = LayoutInflater.from(context).inflate(R.layout.view_serial_follow_popup_window, null);
+            ImageView ivArrow = (ImageView) popupView.findViewById(R.id.arrow);
+            ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) ivArrow.getLayoutParams();
+            layoutParams.leftToLeft = ConstraintLayout.LayoutParams.UNSET;
+            layoutParams.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID;
+            layoutParams.rightMargin = ResUtils.dp2px(45) - layoutParams.width/2;
+            ivArrow.setLayoutParams(layoutParams);
+            final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//            mPopupWindow.setFocusable(true);
+//            mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            parent.post(new Runnable() {
+                @Override
+                public void run() {
+                    int[] titleViewLocation = new int[2];
+                    parent.getLocationOnScreen(titleViewLocation);
+                    popupWindow.showAtLocation(parent, Gravity.RIGHT|Gravity.TOP, ResUtils.dp2px(15),
+                            titleViewLocation[1]+parent.getHeight()-ResUtils.dp2px(6));
+                }
+            });
+            popupView.findViewById(R.id.ivHide).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    popupWindow.dismiss();
+                }
+            });
+            popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                    PreferenceUtils.putBoolean(PreferenceFinals.SERIAL_SUMMARY_INVENTORY_TIP, true);
+                    PreferenceUtils.commit();
+                }
+            });
+            return popupWindow;
+        }
+        return null;
+    }
+
+    /**
+     * 选车首页清单入口提示，安装或升级到v9.0显示一次
+     */
+    public static PopupWindow initInventoryTip(Context context, final View anchor) {
+        if (AppUtils.getVersionCode()==1
+                &&!PreferenceUtils.getBoolean(PreferenceFinals.SELECT_CAR_HOME_INVENTORY_TIP)) {
+            final View popupView = LayoutInflater.from(context).inflate(R.layout.view_serial_follow_popup_window, null);
+            TextView tvSlogan = (TextView) popupView.findViewById(R.id.tvSlogan);
+            tvSlogan.setText(R.string.select_car_inventory_entry_guide);
+            final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            // 点popupWindow外面消失
+//            popupWindow.setFocusable(true);
+//            popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            anchor.post(new Runnable() {
+                @Override
+                public void run() {
+                    popupWindow.showAsDropDown(anchor, 0, -ResUtils.dp2px(6));
+                }
+            });
+            popupView.findViewById(R.id.ivHide).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    popupWindow.dismiss();
+                }
+            });
+            popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                    PreferenceUtils.putBoolean(PreferenceFinals.SELECT_CAR_HOME_INVENTORY_TIP, true);
+                    PreferenceUtils.commit();
+                }
+            });
+            return popupWindow;
+        }
+        return null;
     }
 }

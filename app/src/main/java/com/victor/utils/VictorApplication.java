@@ -16,5 +16,7 @@ public class VictorApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mApplication = this;
+
+        PreferenceUtils.initialize(this);
     }
 }
