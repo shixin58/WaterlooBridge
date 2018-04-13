@@ -2,5 +2,6 @@
 <resources>
     <declare-styleable name="RoundCornerImageView">
         <attr name="corner_radius" format="dimension"/>
+        <attr name="stroke_width" format="dimension"/>
     </declare-styleable>
 </resources>

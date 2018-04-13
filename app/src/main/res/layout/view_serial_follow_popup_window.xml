@@ -41,6 +41,6 @@
             android:layout_height="32dp"
             android:layout_gravity="center_vertical"
             android:padding="10dp"
-            android:src="@drawable/skin_d_ic_close_night"/>
+            android:src="@drawable/skin_d_ic_close_popup"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
