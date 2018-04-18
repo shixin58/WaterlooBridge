@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 购车信息banner -->
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/flexbox_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:alignContent="flex_start"
+    app:alignItems="flex_start"
+    app:dividerDrawableHorizontal="@drawable/divider_horizontal"
+    app:dividerDrawableVertical="@drawable/divider_vertical"
+    app:flexDirection="row"
+    app:flexWrap="wrap"
+    app:showDividerHorizontal="beginning|middle|end"
+    app:showDividerVertical="middle">
+
+    <!-- 裸车价 -->
+    <TextView
+        android:id="@+id/naked_car_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:gravity="center_horizontal"
+        android:text="裸车价  16.32万元"
+        android:textColor="#FFFF4F53"
+        android:textSize="12sp"/>
+
+    <!-- 油耗 -->
+    <TextView
+        android:id="@+id/fuel_consumption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:gravity="center_horizontal"
+        android:text="油耗  8.6L/100km"
+        android:textColor="#FF666666"
+        android:textSize="12sp"/>
+
+    <!-- 行驶里程 -->
+    <TextView
+        android:id="@+id/vehicle_mileage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:gravity="center_horizontal"
+        android:text="里程  29201公里"
+        android:textColor="#FF666666"
+        android:textSize="12sp"/>
+
+    <!-- 购车时间 -->
+    <TextView
+        android:id="@+id/purchase_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:gravity="center_horizontal"
+        android:text="购于  2015-01"
+        android:textColor="#FF666666"
+        android:textSize="12sp"/>
+
+    <!-- 购车地点 -->
+    <TextView
+        android:id="@+id/purchase_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:gravity="center_horizontal"
+        android:text="购车地点：广东省湛江市 特许-金富大众经销商"
+        android:textColor="#FF666666"
+        android:textSize="12sp"/>
+</com.google.android.flexbox.FlexboxLayout>

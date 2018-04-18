@@ -41,10 +41,22 @@
     </android.support.v7.widget.CardView>
 
     <include layout="@layout/view_car_level_tabs"
+        android:id="@+id/horizontal_scrollview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_view"
+        android:layout_marginTop="20dp"/>
+
+    <include layout="@layout/view_flexbox_layout"
+        android:id="@+id/flexbox_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_scrollview"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
         android:layout_marginTop="20dp"/>
 </android.support.constraint.ConstraintLayout>
