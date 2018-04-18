@@ -9,4 +9,7 @@
     <color name="blue">#0000FF</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+
+    <color name="tx_2">#FF666666</color>
+    <color name="tx_6">#FF339CFE</color>
 </resources>

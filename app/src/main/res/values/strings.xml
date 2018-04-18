@@ -20,4 +20,8 @@
 
     <string name="serial_follow_guide">加入清单优惠降价早知道</string>
     <string name="select_car_inventory_entry_guide">你关注的车搬到这里了哦</string>
+    <string name="web_service_and_privacy_policy_updated">网络服务协议和隐私政策有更新，请您查看并同意，以便更好的行驶权利及保护个人信息</string>
+    <string name="web_service_agreement">网络服务协议</string>
+    <string name="privacy_policy">隐私政策</string>
+    <string name="agree">同意</string>
 </resources>

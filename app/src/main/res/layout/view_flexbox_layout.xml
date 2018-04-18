@@ -35,7 +35,7 @@
         android:layout_marginRight="12dp"
         android:gravity="center_horizontal"
         android:text="油耗  8.6L/100km"
-        android:textColor="#FF666666"
+        android:textColor="@color/tx_2"
         android:textSize="12sp"/>
 
     <!-- 行驶里程 -->
@@ -47,7 +47,7 @@
         android:layout_marginRight="12dp"
         android:gravity="center_horizontal"
         android:text="里程  29201公里"
-        android:textColor="#FF666666"
+        android:textColor="@color/tx_2"
         android:textSize="12sp"/>
 
     <!-- 购车时间 -->
@@ -59,7 +59,7 @@
         android:layout_marginRight="12dp"
         android:gravity="center_horizontal"
         android:text="购于  2015-01"
-        android:textColor="#FF666666"
+        android:textColor="@color/tx_2"
         android:textSize="12sp"/>
 
     <!-- 购车地点 -->
@@ -71,6 +71,6 @@
         android:layout_marginRight="12dp"
         android:gravity="center_horizontal"
         android:text="购车地点：广东省湛江市 特许-金富大众经销商"
-        android:textColor="#FF666666"
+        android:textColor="@color/tx_2"
         android:textSize="12sp"/>
 </com.google.android.flexbox.FlexboxLayout>

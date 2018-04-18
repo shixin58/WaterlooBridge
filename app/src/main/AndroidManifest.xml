@@ -34,5 +34,8 @@
         <activity android:name=".activities.PopupLayerActivity"
             android:screenOrientation="portrait"
             android:label="@string/popup_layer"/>
+
+        <activity android:name=".widget.PrivacyPolicyDialog"
+            android:theme="@style/dialog_appCompat"/>
     </application>
 </manifest>
