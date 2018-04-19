@@ -24,9 +24,11 @@ import java.util.List;
 /**
  * <p>Created by shixin on 2018/4/19.
  */
-public class BottomChooseDialog extends Dialog implements View.OnClickListener {
+public class BottomChooseDialog extends Dialog {
 
     private List<String> mList = new ArrayList<>();
+    private BaseRecyclerAdapter.OnItemClickListener mOnItemClickListener;
+    private View.OnClickListener mOnCancelClickListener;
 
     public BottomChooseDialog(@NonNull Context context) {
         super(context, R.style.dialog_bottom);
@@ -52,17 +54,13 @@ public class BottomChooseDialog extends Dialog implements View.OnClickListener {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         MyAdapter myAdapter = new MyAdapter(mList);
+        if(mOnItemClickListener!=null) {
+            myAdapter.setOnItemClickListener(mOnItemClickListener);
+        }
         recyclerView.setAdapter(myAdapter);
 
-        findViewById(R.id.tv_cancel).setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_cancel:
-                dismiss();
-                break;
+        if(mOnCancelClickListener!=null) {
+            findViewById(R.id.tv_cancel).setOnClickListener(mOnCancelClickListener);
         }
     }
 
@@ -80,7 +78,15 @@ public class BottomChooseDialog extends Dialog implements View.OnClickListener {
         }
     }
 
-    static class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+    public void setOnItemClickListener(BaseRecyclerAdapter.OnItemClickListener listener) {
+        mOnItemClickListener = listener;
+    }
+
+    public void setOnCancelClickListener(View.OnClickListener listener) {
+        mOnCancelClickListener = listener;
+    }
+
+    static class MyAdapter extends BaseRecyclerAdapter<MyAdapter.MyViewHolder> {
 
         private List<String> mList = new ArrayList<>();
 
@@ -98,12 +104,12 @@ public class BottomChooseDialog extends Dialog implements View.OnClickListener {
 
         @NonNull
         @Override
-        public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public MyViewHolder onCreateVH(@NonNull ViewGroup parent, int viewType) {
             return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_bottom_choose, parent, false));
         }
 
         @Override
-        public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        public void onBindVH(@NonNull MyViewHolder holder, int position) {
             holder.tvContent.setText(mList.get(position));
             holder.divider.setVisibility((position==mList.size()-1)?View.GONE:View.VISIBLE);
         }

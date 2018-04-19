@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.victor.utils.PreferenceUtils;
 import com.victor.utils.R;
 import com.victor.utils.ResUtils;
 import com.victor.utils.specific.WidgetUtils;
+import com.victor.utils.widget.BaseRecyclerAdapter;
 import com.victor.utils.widget.BottomChooseDialog;
 import com.victor.utils.widget.PrivacyPolicyDialog;
 
@@ -49,8 +51,22 @@ public class PopupLayerActivity extends AppCompatActivity implements View.OnClic
                 PrivacyPolicyDialog.show(this);
                 break;
             case R.id.tv_dialog_bottom:
-                BottomChooseDialog dialog = new BottomChooseDialog(this);
-                dialog.setList(ResUtils.getStringArray(R.array.loan_down_payment_ratio));
+                final BottomChooseDialog dialog = new BottomChooseDialog(this);
+                final String[] strings = ResUtils.getStringArray(R.array.loan_down_payment_ratio);
+                dialog.setList(strings);
+                dialog.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Toast.makeText(PopupLayerActivity.this, strings[position], Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+                dialog.setOnCancelClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
                 dialog.show();
                 break;
         }
