@@ -24,4 +24,6 @@
     <string name="web_service_agreement">网络服务协议</string>
     <string name="privacy_policy">隐私政策</string>
     <string name="agree">同意</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
 </resources>

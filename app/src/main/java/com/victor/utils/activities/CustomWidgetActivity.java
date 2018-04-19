@@ -9,7 +9,6 @@ import android.widget.RadioButton;
 
 import com.victor.utils.R;
 import com.victor.utils.specific.WidgetUtils;
-import com.victor.utils.widget.PrivacyPolicyDialog;
 
 import java.util.List;
 
@@ -37,9 +36,5 @@ public class CustomWidgetActivity extends AppCompatActivity {
 
     @OnClick({R.id.btn00, R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.btn05, R.id.btn06, R.id.btn07}) void onTabClick(View view) {
         WidgetUtils.controlTabsPosition(horizontalScrollView, radioButtons, radioButtons.indexOf(view));
-    }
-
-    @OnClick(R.id.tv_show_dialog) void onDialogButtonClick() {
-        PrivacyPolicyDialog.show(this);
     }
 }

@@ -12,6 +12,10 @@ public class ResUtils {
         return VictorApplication.getInstance().getString(id);
     }
 
+    public static String[] getStringArray(int id) {
+        return VictorApplication.getInstance().getResources().getStringArray(R.array.loan_down_payment_ratio);
+    }
+
     public static int getColor(int id) {
         return VictorApplication.getInstance().getResources().getColor(id);
     }

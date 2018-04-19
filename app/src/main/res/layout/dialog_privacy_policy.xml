@@ -19,7 +19,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFEAEEF5"/>
+        android:background="@color/ln_1"/>
 
     <TextView
         android:id="@+id/agree_tv"
