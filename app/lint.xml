@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="UnusedIds" severity="ignore"/>
+    <issue id="UnusedResources" severity="ignore"/>
+    <issue id="HardcodedText">
+        <ignore path="res/layout/view_flexbox_layout.xml"/>
+    </issue>
+    <issue id="RtlHardcoded">
+        <ignore path="res/layout/adapter_follow_animation.xml"/>
+    </issue>
+</lint>
