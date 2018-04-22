@@ -37,5 +37,9 @@
 
         <activity android:name=".widget.PrivacyPolicyDialog"
             android:theme="@style/dialog_appCompat"/>
+
+        <activity android:name=".activities.ViewPagerActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/view_pager"/>
     </application>
 </manifest>

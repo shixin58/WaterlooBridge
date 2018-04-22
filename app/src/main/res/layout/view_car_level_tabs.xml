@@ -16,7 +16,7 @@
             android:id="@+id/btn00"
             style="@style/paihang_brand_comm_tab_btn"
             android:checked="true"
-            android:text="@string/rank_filter_jincouxingche"/>
+            android:text="@string/car_level_jincouxingche"/>
 
         <RadioButton
             android:id="@+id/btn01"
@@ -36,7 +36,7 @@
         <RadioButton
             android:id="@+id/btn04"
             style="@style/paihang_brand_comm_tab_btn"
-            android:text="@string/rank_filter_xiaoxingche"/>
+            android:text="@string/car_level_xiaoxingche"/>
 
         <RadioButton
             android:id="@+id/btn05"
@@ -46,7 +46,7 @@
         <RadioButton
             android:id="@+id/btn06"
             style="@style/paihang_brand_comm_tab_btn"
-            android:text="@string/rank_filter_zhongdaxingche"/>
+            android:text="@string/car_level_zhongdaxingche"/>
 
         <RadioButton
             android:id="@+id/btn07"
