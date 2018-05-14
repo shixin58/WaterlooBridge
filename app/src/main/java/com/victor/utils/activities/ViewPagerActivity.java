@@ -11,7 +11,7 @@ import android.widget.RadioGroup;
 
 import com.victor.utils.R;
 import com.victor.utils.specific.WidgetUtils;
-import com.victor.utils.widget.RankingListPagerAdapter;
+import com.victor.utils.adapter.RankingListPagerAdapter;
 
 import java.util.List;
 

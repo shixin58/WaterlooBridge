@@ -1,4 +1,4 @@
-package com.victor.utils.widget;
+package com.victor.utils.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
