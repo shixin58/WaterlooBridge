@@ -5,6 +5,7 @@ import com.victor.utils.ResUtils;
 import com.victor.utils.activities.CustomWidgetActivity;
 import com.victor.utils.activities.DrawSmallIconActivity;
 import com.victor.utils.activities.FollowAnimationActivity;
+import com.victor.utils.activities.LazyViewPagerActivity;
 import com.victor.utils.activities.PopupLayerActivity;
 import com.victor.utils.activities.ViewPagerActivity;
 import com.victor.utils.model.HomeModel;
@@ -29,6 +30,8 @@ public class HomeRepository {
         list.add(homeModel3);
         HomeModel homeModel4 = new HomeModel(ViewPagerActivity.class, ResUtils.getString(R.string.view_pager));
         list.add(homeModel4);
+        HomeModel homeModel5 = new HomeModel(LazyViewPagerActivity.class, ResUtils.getString(R.string.lazy_view_pager));
+        list.add(homeModel5);
         return list;
     }
 }
