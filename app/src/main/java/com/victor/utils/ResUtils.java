@@ -1,5 +1,7 @@
 package com.victor.utils;
 
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
@@ -18,6 +20,14 @@ public class ResUtils {
 
     public static int getColor(int id) {
         return VictorApplication.getInstance().getResources().getColor(id);
+    }
+
+    public static ColorStateList getColorStateList(int id) {
+        return VictorApplication.getInstance().getResources().getColorStateList(id);
+    }
+
+    public static Drawable getDrawable(int resId) {
+        return VictorApplication.getInstance().getResources().getDrawable(resId);
     }
 
     public static DisplayMetrics getDisplayMetrics() {
