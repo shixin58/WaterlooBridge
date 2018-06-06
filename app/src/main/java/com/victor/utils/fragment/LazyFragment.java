@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,15 @@ import android.widget.TextView;
 import com.victor.utils.R;
 import com.victor.utils.widget.LazyFragmentPagerAdapter;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * <p>Created by shixin on 2018/6/4.
  */
 public class LazyFragment extends Fragment implements LazyFragmentPagerAdapter.Deferrable {
+
+    private static final String TAG_BLANK = "tag_blank";
 
     private int mPosition;
 
@@ -32,7 +38,9 @@ public class LazyFragment extends Fragment implements LazyFragmentPagerAdapter.D
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_lazy, container, false);
+        View view = inflater.inflate(R.layout.fragment_lazy, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override
@@ -55,5 +63,20 @@ public class LazyFragment extends Fragment implements LazyFragmentPagerAdapter.D
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         Log.i("Max", mPosition+" setUserVisibleHint-"+isVisibleToUser);
+    }
+
+    @OnClick(R.id.tv_position) void onPositionClick() {
+        Fragment fragment = getActivity().getSupportFragmentManager().findFragmentByTag(TAG_BLANK);
+        if(fragment != null) {
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.remove(fragment);
+            fragmentTransaction.commitNow();
+        }
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        BlankFragment blankFragment = BlankFragment.newInstance();
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.add(R.id.fragment_container, blankFragment, TAG_BLANK).addToBackStack(null);
+        transaction.commitAllowingStateLoss();
     }
 }
