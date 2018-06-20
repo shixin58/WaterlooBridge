@@ -18,8 +18,8 @@ import android.widget.Toast;
 import com.victor.utils.ResUtils;
 
 /**
- * 项目名称：android-autoEasy
- *
+ * 方形多色块
+ * <p>项目名称：android-autoEasy
  * @author menggod
  * @date 2018/1/4.
  */
