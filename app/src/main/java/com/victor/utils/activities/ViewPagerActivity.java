@@ -3,15 +3,15 @@ package com.victor.utils.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.max.baselib.BaseActivity;
 import com.victor.utils.R;
-import com.victor.utils.specific.WidgetUtils;
 import com.victor.utils.adapter.RankingListPagerAdapter;
+import com.victor.utils.specific.WidgetUtils;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import butterknife.OnClick;
 /**
  * <p>Created by shixin on 2018/4/22.
  */
-public class ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
+public class ViewPagerActivity extends BaseActivity implements ViewPager.OnPageChangeListener{
 
     @BindView(R.id.horizontal_scrollview)
     HorizontalScrollView mHorizontalScrollView;

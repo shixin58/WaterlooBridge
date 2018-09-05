@@ -3,7 +3,6 @@ package com.victor.utils.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ImageView;
@@ -11,9 +10,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.max.baselib.BaseActivity;
+import com.victor.utils.R;
 import com.victor.utils.adapter.FollowAnimationAdapter;
 import com.victor.utils.specific.FollowAnimationUtils;
-import com.victor.utils.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
  * 关注动画
  * <p>Created by shixin on 2018/4/1.
  */
-public class FollowAnimationActivity extends AppCompatActivity implements View.OnClickListener {
+public class FollowAnimationActivity extends BaseActivity implements View.OnClickListener {
 
     @BindView(R.id.list_view)
     ListView listView;

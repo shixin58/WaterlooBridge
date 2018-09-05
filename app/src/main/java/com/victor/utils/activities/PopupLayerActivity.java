@@ -2,10 +2,10 @@ package com.victor.utils.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.max.baselib.BaseActivity;
 import com.victor.utils.PreferenceUtils;
 import com.victor.utils.R;
 import com.victor.utils.ResUtils;
@@ -17,7 +17,7 @@ import com.victor.utils.widget.PrivacyPolicyDialog;
 /**
  * <p>Created by shixin on 2018/4/7.
  */
-public class PopupLayerActivity extends AppCompatActivity implements View.OnClickListener{
+public class PopupLayerActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

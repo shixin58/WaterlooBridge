@@ -3,20 +3,20 @@ package com.victor.utils.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.max.baselib.BaseFragment;
 import com.victor.utils.R;
 import com.victor.utils.ResUtils;
 
 /**
  * <p>Created by shixin on 2018/4/22.
  */
-public class RankingListFragment extends Fragment {
+public class RankingListFragment extends BaseFragment {
     public static final String KEY_CAR_LEVEL = "key_car_level";
     /** 紧凑型 */
     public static int CAR_LEVEL_JINCOUXINGCHE = 3;

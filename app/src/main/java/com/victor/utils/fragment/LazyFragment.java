@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.max.baselib.BaseFragment;
 import com.victor.utils.R;
 import com.victor.utils.widget.LazyFragmentPagerAdapter;
 
@@ -20,7 +21,7 @@ import butterknife.OnClick;
 /**
  * <p>Created by shixin on 2018/6/4.
  */
-public class LazyFragment extends Fragment implements LazyFragmentPagerAdapter.Deferrable {
+public class LazyFragment extends BaseFragment implements LazyFragmentPagerAdapter.Deferrable {
 
     private static final String TAG_BLANK = "tag_blank";
 

@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 
+import com.max.baselib.BaseActivity;
 import com.victor.utils.R;
 import com.victor.utils.adapter.ConcreteLazyFragmentPagerAdapter;
 import com.victor.utils.fragment.LazyFragment;
@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
  * 懒加载
  * <p>Created by shixin on 2018/6/4.
  */
-public class LazyViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class LazyViewPagerActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
 
     @BindView(R.id.view_pager)
     LazyViewPager mViewPager;

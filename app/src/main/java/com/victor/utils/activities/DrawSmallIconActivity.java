@@ -2,11 +2,11 @@ package com.victor.utils.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.TextView;
 
+import com.max.baselib.BaseActivity;
 import com.victor.utils.R;
 import com.victor.utils.ResUtils;
 import com.victor.utils.specific.DrawUtils;
@@ -15,7 +15,7 @@ import com.victor.utils.specific.DrawUtils;
  * 绘制小icon
  * <p>Created by shixin on 2018/4/1.
  */
-public class DrawSmallIconActivity extends AppCompatActivity {
+public class DrawSmallIconActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
