@@ -1,7 +1,7 @@
 package com.victor.utils.repository;
 
+import com.max.baselib.ResUtils;
 import com.victor.utils.R;
-import com.victor.utils.ResUtils;
 import com.victor.utils.activities.CustomWidgetActivity;
 import com.victor.utils.activities.DrawSmallIconActivity;
 import com.victor.utils.activities.FollowAnimationActivity;

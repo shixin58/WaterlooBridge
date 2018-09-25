@@ -13,11 +13,11 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.max.baselib.PreferenceUtils;
+import com.max.baselib.ResUtils;
 import com.victor.utils.AppUtils;
 import com.victor.utils.PreferenceFinals;
-import com.victor.utils.PreferenceUtils;
 import com.victor.utils.R;
-import com.victor.utils.ResUtils;
 
 import java.util.List;
 

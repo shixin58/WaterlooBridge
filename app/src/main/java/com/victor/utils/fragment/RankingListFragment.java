@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.max.baselib.BaseFragment;
+import com.max.baselib.ResUtils;
 import com.victor.utils.R;
-import com.victor.utils.ResUtils;
 
 /**
  * <p>Created by shixin on 2018/4/22.

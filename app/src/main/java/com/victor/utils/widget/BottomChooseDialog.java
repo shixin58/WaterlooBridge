@@ -14,8 +14,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.max.baselib.ResUtils;
+import com.max.baselib.widget.BaseRecyclerAdapter;
 import com.victor.utils.R;
-import com.victor.utils.ResUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;

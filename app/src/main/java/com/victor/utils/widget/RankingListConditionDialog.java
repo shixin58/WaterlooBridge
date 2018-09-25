@@ -17,8 +17,8 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.max.baselib.ResUtils;
 import com.victor.utils.R;
-import com.victor.utils.ResUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;

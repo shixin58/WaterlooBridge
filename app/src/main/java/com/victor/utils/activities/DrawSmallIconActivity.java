@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.max.baselib.BaseActivity;
+import com.max.baselib.ResUtils;
 import com.victor.utils.R;
-import com.victor.utils.ResUtils;
 import com.victor.utils.specific.DrawUtils;
 
 /**

@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.max.baselib.BaseActivity;
-import com.victor.utils.PreferenceUtils;
+import com.max.baselib.PreferenceUtils;
+import com.max.baselib.ResUtils;
+import com.max.baselib.widget.BaseRecyclerAdapter;
 import com.victor.utils.R;
-import com.victor.utils.ResUtils;
 import com.victor.utils.specific.WidgetUtils;
-import com.victor.utils.widget.BaseRecyclerAdapter;
 import com.victor.utils.widget.BottomChooseDialog;
 import com.victor.utils.widget.PrivacyPolicyDialog;
 

@@ -9,8 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 
+import com.max.baselib.ResUtils;
 import com.victor.utils.R;
-import com.victor.utils.ResUtils;
 
 /**
  * <p>Created by shixin on 2018/2/22.
