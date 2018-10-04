@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.victor.utils.activities.FollowAnimationActivity">
+    tools:context="com.roy.devil.activities.FollowAnimationActivity">
 
     <ListView
         android:id="@+id/list_view"
