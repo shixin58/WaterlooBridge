@@ -9,6 +9,7 @@
         android:id="@+id/view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:init_lazy_item_offset="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"

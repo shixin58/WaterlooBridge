@@ -1,5 +1,6 @@
 package com.roy.devil.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -36,48 +37,71 @@ public class LazyFragment extends BaseFragment implements LazyFragmentPagerAdapt
         return fragment;
     }
 
+    public LazyFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mPosition = getArguments().getInt("position");
+        Log.i("lifecycle", "onAttach "+mPosition);
+    }
+
+    @Override
+    public void onDetach() {
+        Log.i("lifecycle", "onDetach "+mPosition);
+        super.onDetach();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lazy, container, false);
         ButterKnife.bind(this, view);
+        Log.i("lifecycle", "onCreateView "+mPosition);
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Log.i("lifecycle", "onActivityCreated "+mPosition);
         initData();
         initView();
     }
 
+    @Override
+    public void onDestroyView() {
+        Log.i("lifecycle", "onDestroyView "+mPosition);
+        super.onDestroyView();
+    }
+
     private void initData() {
-        mPosition = getArguments().getInt("position");
     }
 
     private void initView() {
-        TextView tvPosition = getView().findViewById(R.id.tv_position);
+        TextView tvPosition = getView().findViewById(R.id.tv_page);
         tvPosition.setText("No."+mPosition);
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Log.i("Max", mPosition+" setUserVisibleHint-"+isVisibleToUser);
+        Log.i("Max", getArguments().getInt("position")+" setUserVisibleHint-"+isVisibleToUser);
     }
 
-    @OnClick(R.id.tv_position) void onPositionClick() {
-        Fragment fragment = getActivity().getSupportFragmentManager().findFragmentByTag(TAG_BLANK);
-        if(fragment != null) {
-            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+    @OnClick(R.id.tv_page) void onPositionClick() {
+        Fragment fragment = getChildFragmentManager().findFragmentByTag(TAG_BLANK+"_"+mPosition);
+        if(fragment != null && !fragment.isRemoving()) {
+            FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
             fragmentTransaction.remove(fragment);
-            fragmentTransaction.commitNow();
+            fragmentTransaction.commitAllowingStateLoss();
+            return;
         }
 
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         BlankFragment blankFragment = BlankFragment.newInstance();
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        transaction.add(R.id.fragment_container, blankFragment, TAG_BLANK).addToBackStack(null);
+        transaction.add(R.id.fragment_container, blankFragment, TAG_BLANK+"_"+mPosition);
         transaction.commitAllowingStateLoss();
     }
 }

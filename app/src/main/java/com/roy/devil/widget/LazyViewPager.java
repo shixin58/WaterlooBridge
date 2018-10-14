@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.roy.devil.R;
 
@@ -29,8 +30,8 @@ public class LazyViewPager extends ViewPager {
 	public LazyViewPager(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
-		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.base_LazyViewPager);
-		setInitLazyItemOffset(a.getFloat(R.styleable.base_LazyViewPager_base_init_lazy_item_offset, DEFAULT_OFFSET));
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LazyViewPager, 0, 0);
+		setInitLazyItemOffset(a.getFloat(R.styleable.LazyViewPager_init_lazy_item_offset, DEFAULT_OFFSET));
 		a.recycle();
 	}
 
@@ -47,14 +48,16 @@ public class LazyViewPager extends ViewPager {
 	@Override
 	public void setAdapter(PagerAdapter adapter) {
 		super.setAdapter(adapter);
-        mLazyPagerAdapter = adapter != null && adapter instanceof LazyPagerAdapter ? (LazyPagerAdapter) adapter : null;
+        mLazyPagerAdapter = adapter instanceof LazyPagerAdapter ? (LazyPagerAdapter) adapter : null;
 	}
 
 	@Override
 	protected void onPageScrolled(int position, float offset, int offsetPixels) {
+		Log.i("onPageScrolled", getCurrentItem()+", "+position+", "+offset+", "+offsetPixels);
 		if (mLazyPagerAdapter != null) {
 			if (getCurrentItem() == position) {
 				int lazyPosition = position + 1;
+				// 左滑，offset递增
 				if (offset >= mInitLazyItemOffset && mLazyPagerAdapter.isLazyItem(lazyPosition)) {
                     mLazyPagerAdapter.startUpdate(this);
                     mLazyPagerAdapter.addLazyItem(this, lazyPosition);
@@ -62,6 +65,7 @@ public class LazyViewPager extends ViewPager {
 				}
 			} else if (getCurrentItem() > position) {
 				int lazyPosition = position;
+				// 右滑，offset递减
 				if (1 - offset >= mInitLazyItemOffset && mLazyPagerAdapter.isLazyItem(lazyPosition)) {
                     mLazyPagerAdapter.startUpdate(this);
                     mLazyPagerAdapter.addLazyItem(this, lazyPosition);
