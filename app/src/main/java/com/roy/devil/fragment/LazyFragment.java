@@ -85,9 +85,19 @@ public class LazyFragment extends BaseFragment implements LazyFragmentPagerAdapt
     }
 
     @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+    }
+
+    @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         Log.i("Max", getArguments().getInt("position")+" setUserVisibleHint-"+isVisibleToUser);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
     }
 
     @OnClick(R.id.tv_page) void onPositionClick() {
