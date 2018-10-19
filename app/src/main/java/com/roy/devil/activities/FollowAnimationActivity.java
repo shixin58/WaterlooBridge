@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.max.baselib.BaseActivity;
+import com.bride.baselib.BaseActivity;
 import com.roy.devil.R;
 import com.roy.devil.adapter.FollowAnimationAdapter;
 import com.roy.devil.specific.FollowAnimationUtils;

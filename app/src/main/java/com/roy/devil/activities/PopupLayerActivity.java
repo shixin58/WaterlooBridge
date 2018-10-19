@@ -5,10 +5,10 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
 
-import com.max.baselib.BaseActivity;
-import com.max.baselib.PreferenceUtils;
-import com.max.baselib.ResUtils;
-import com.max.baselib.widget.BaseRecyclerAdapter;
+import com.bride.baselib.BaseActivity;
+import com.bride.baselib.PreferenceUtils;
+import com.bride.baselib.ResUtils;
+import com.bride.baselib.widget.BaseRecyclerAdapter;
 import com.roy.devil.R;
 import com.roy.devil.specific.WidgetUtils;
 import com.roy.devil.widget.BottomChooseDialog;

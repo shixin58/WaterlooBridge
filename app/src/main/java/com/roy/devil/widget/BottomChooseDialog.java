@@ -14,8 +14,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.max.baselib.ResUtils;
-import com.max.baselib.widget.BaseRecyclerAdapter;
+import com.bride.baselib.ResUtils;
+import com.bride.baselib.widget.BaseRecyclerAdapter;
 import com.roy.devil.R;
 
 import java.util.ArrayList;
@@ -87,9 +87,7 @@ public class BottomChooseDialog extends Dialog {
         mOnCancelClickListener = listener;
     }
 
-    static class MyAdapter extends BaseRecyclerAdapter<MyAdapter.MyViewHolder> {
-
-        private List<String> mList = new ArrayList<>();
+    static class MyAdapter extends BaseRecyclerAdapter<MyAdapter.MyViewHolder, String> {
 
         MyAdapter(List<String> list) {
             setList(list);

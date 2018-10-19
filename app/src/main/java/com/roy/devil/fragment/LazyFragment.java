@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.max.baselib.BaseFragment;
+import com.bride.baselib.BaseFragment;
 import com.roy.devil.R;
 import com.roy.devil.widget.LazyFragmentPagerAdapter;
 

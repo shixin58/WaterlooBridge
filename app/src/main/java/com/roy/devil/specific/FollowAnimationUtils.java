@@ -9,7 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 
-import com.max.baselib.ResUtils;
+import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
 
 /**

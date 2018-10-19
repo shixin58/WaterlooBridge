@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.max.baselib.BaseFragment;
+import com.bride.baselib.BaseFragment;
 import com.roy.devil.R;
 import com.roy.devil.adapter.HomeAdapter;
 import com.roy.devil.repository.HomeRepository;

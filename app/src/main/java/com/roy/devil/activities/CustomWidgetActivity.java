@@ -3,7 +3,7 @@ package com.roy.devil.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.max.baselib.BaseActivity;
+import com.bride.baselib.BaseActivity;
 import com.roy.devil.R;
 
 /**

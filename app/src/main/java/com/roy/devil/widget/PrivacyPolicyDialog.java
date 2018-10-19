@@ -20,7 +20,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.max.baselib.ResUtils;
+import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
 
 /**

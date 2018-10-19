@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.max.baselib.PreferenceUtils;
-import com.max.baselib.ResUtils;
+import com.bride.baselib.PreferenceUtils;
+import com.bride.baselib.ResUtils;
 import com.roy.devil.AppUtils;
 import com.roy.devil.PreferenceFinals;
 import com.roy.devil.R;

@@ -15,7 +15,7 @@ import android.text.style.DynamicDrawableSpan;
 import android.text.style.ImageSpan;
 import android.view.View;
 
-import com.max.baselib.ResUtils;
+import com.bride.baselib.ResUtils;
 import com.roy.devil.VictorApplication;
 
 /**

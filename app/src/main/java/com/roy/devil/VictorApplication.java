@@ -2,8 +2,8 @@ package com.roy.devil;
 
 import android.app.Application;
 
-import com.max.baselib.PreferenceUtils;
-import com.max.baselib.ResUtils;
+import com.bride.baselib.PreferenceUtils;
+import com.bride.baselib.ResUtils;
 
 /**
  * <p>Created by shixin on 2018/4/1.

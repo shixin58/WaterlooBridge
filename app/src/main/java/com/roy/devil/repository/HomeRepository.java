@@ -1,6 +1,6 @@
 package com.roy.devil.repository;
 
-import com.max.baselib.ResUtils;
+import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
 import com.roy.devil.activities.CustomWidgetActivity;
 import com.roy.devil.activities.DrawSmallIconActivity;

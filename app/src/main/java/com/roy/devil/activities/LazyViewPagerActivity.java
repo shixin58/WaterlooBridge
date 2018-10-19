@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
-import com.max.baselib.BaseActivity;
+import com.bride.baselib.BaseActivity;
 import com.roy.devil.R;
 import com.roy.devil.adapter.ConcreteLazyFragmentPagerAdapter;
 import com.roy.devil.fragment.LazyFragment;

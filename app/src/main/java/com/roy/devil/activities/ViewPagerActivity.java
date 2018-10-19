@@ -8,7 +8,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.max.baselib.BaseActivity;
+import com.bride.baselib.BaseActivity;
 import com.roy.devil.R;
 import com.roy.devil.adapter.RankingListPagerAdapter;
 import com.roy.devil.specific.WidgetUtils;
