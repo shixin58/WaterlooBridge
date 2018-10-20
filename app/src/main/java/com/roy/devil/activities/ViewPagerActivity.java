@@ -1,8 +1,6 @@
 package com.roy.devil.activities;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.RadioButton;
@@ -15,6 +13,8 @@ import com.roy.devil.specific.WidgetUtils;
 
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;

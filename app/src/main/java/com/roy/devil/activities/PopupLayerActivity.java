@@ -1,7 +1,6 @@
 package com.roy.devil.activities;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,6 +12,8 @@ import com.roy.devil.R;
 import com.roy.devil.specific.WidgetUtils;
 import com.roy.devil.widget.BottomChooseDialog;
 import com.roy.devil.widget.PrivacyPolicyDialog;
+
+import androidx.annotation.Nullable;
 
 /**
  * <p>Created by shixin on 2018/4/7.

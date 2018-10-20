@@ -3,7 +3,6 @@ package com.roy.devil.specific;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.support.constraint.ConstraintLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +19,8 @@ import com.roy.devil.PreferenceFinals;
 import com.roy.devil.R;
 
 import java.util.List;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 /**
  * <p>Created by shixin on 2018/4/5.

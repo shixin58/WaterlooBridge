@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/title_bar"
             android:layout_width="0dp"
             android:layout_height="44dp"
@@ -28,9 +28,9 @@
                 android:textSize="16sp"
                 android:text="标题"/>
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/inventory_entry"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -53,9 +53,9 @@
                 android:textSize="14sp"
                 android:text="清除Preferences"/>
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/dialog_bottom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -88,6 +88,6 @@
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:text="Show Bottom Dialog"/>
-        </android.support.constraint.ConstraintLayout>
-    </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,7 +23,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/sailboat_race"/>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="0dp"
             android:layout_height="60dp"
@@ -42,7 +42,7 @@
                 android:layout_height="40dp"
                 android:background="@android:color/black"
                 android:layout_gravity="center" />
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <include layout="@layout/view_flexbox_layout"
             android:id="@+id/flexbox_layout"
@@ -54,5 +54,5 @@
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:layout_marginTop="20dp"/>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

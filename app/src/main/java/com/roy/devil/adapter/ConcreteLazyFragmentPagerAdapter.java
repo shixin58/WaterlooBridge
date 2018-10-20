@@ -1,12 +1,13 @@
 package com.roy.devil.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.ViewGroup;
 
 import com.roy.devil.widget.LazyFragmentPagerAdapter;
 
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 /**
  * ViewPager懒加载

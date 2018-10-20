@@ -1,7 +1,6 @@
 package com.roy.devil.activities;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +9,8 @@ import com.bride.baselib.BaseActivity;
 import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
 import com.roy.devil.specific.DrawUtils;
+
+import androidx.annotation.Nullable;
 
 /**
  * 绘制小icon

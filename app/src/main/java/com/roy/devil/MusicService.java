@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import com.roy.devil.repository.MusicRepository;
 
 import java.io.IOException;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * <p>Created by shixin on 2018/10/20.

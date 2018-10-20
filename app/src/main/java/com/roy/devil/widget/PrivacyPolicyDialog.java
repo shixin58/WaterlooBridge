@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -22,6 +21,8 @@ import android.widget.Toast;
 
 import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by shixin on 2017/10/19.

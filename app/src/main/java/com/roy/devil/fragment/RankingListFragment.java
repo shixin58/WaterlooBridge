@@ -1,8 +1,6 @@
 package com.roy.devil.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +10,9 @@ import android.widget.TextView;
 import com.bride.baselib.BaseFragment;
 import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * <p>Created by shixin on 2018/4/22.
