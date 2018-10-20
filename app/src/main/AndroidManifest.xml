@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.roy.devil">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:name=".VictorApplication"
         android:allowBackup="true"
@@ -45,5 +48,11 @@
         <activity android:name=".activities.LazyViewPagerActivity"
             android:screenOrientation="portrait"
             android:label="@string/lazy_view_pager"/>
+
+        <activity android:name=".activities.MusicActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/music"/>
+
+        <service android:name=".MusicService"/>
     </application>
 </manifest>

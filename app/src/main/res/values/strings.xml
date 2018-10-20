@@ -7,6 +7,7 @@
     <string name="popup_layer">弹窗</string>
     <string name="view_pager">ViewPager</string>
     <string name="lazy_view_pager">LazyViewPager</string>
+    <string name="music">Music</string>
 
     <string name="dog">泰迪犬</string>
     <string name="drink">脉动 维生素饮料 仙人掌青橘口味 探索沙漠神秘绿洲，犹如满水回复，开启活力探险</string>
@@ -28,4 +29,6 @@
     <string name="agree">同意</string>
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
+
+    <string name="no_music">请先在\n/storage/emulated/0/Music/Favourite/\n添加音乐</string>
 </resources>

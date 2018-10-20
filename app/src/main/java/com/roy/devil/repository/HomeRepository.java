@@ -6,6 +6,7 @@ import com.roy.devil.activities.CustomWidgetActivity;
 import com.roy.devil.activities.DrawSmallIconActivity;
 import com.roy.devil.activities.FollowAnimationActivity;
 import com.roy.devil.activities.LazyViewPagerActivity;
+import com.roy.devil.activities.MusicActivity;
 import com.roy.devil.activities.PopupLayerActivity;
 import com.roy.devil.activities.ViewPagerActivity;
 import com.roy.devil.model.HomeModel;
@@ -32,6 +33,8 @@ public class HomeRepository {
         list.add(homeModel4);
         HomeModel homeModel5 = new HomeModel(LazyViewPagerActivity.class, ResUtils.getString(R.string.lazy_view_pager));
         list.add(homeModel5);
+        HomeModel homeModel6 = new HomeModel(MusicActivity.class, ResUtils.getString(R.string.music));
+        list.add(homeModel6);
         return list;
     }
 }
