@@ -4,19 +4,24 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bride.baselib.BaseActivity;
+import com.bride.baselib.widget.BaseRecyclerAdapter;
 import com.roy.devil.MusicService;
 import com.roy.devil.R;
 import com.roy.devil.adapter.MusicAdapter;
 import com.roy.devil.repository.MusicRepository;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,8 +38,11 @@ public class MusicActivity extends BaseActivity {
     RecyclerView mRecyclerView;
     @BindView(R.id.tv_empty)
     TextView mTvEmpty;
+    @BindView(R.id.progress_bar)
+    ProgressBar mProgressBar;
 
     private MusicService mMusicService;
+    private Timer mTimer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,19 @@ public class MusicActivity extends BaseActivity {
         }else {
             mTvEmpty.setVisibility(View.VISIBLE);
         }
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int i) {
+                mMusicService.play(i);
+            }
+        });
+        mProgressBar.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mMusicService.seek(750);
+                return true;
+            }
+        });
     }
 
     private void initService() {
@@ -68,6 +89,25 @@ public class MusicActivity extends BaseActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mMusicService = ((MusicService.MyBinder)service).getService();
+            mMusicService.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
+                @Override
+                public void onSeekComplete(MediaPlayer mp) {
+                    mProgressBar.setProgress(mMusicService.getPermillage());
+                }
+            });
+            mTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if(!mMusicService.isPlaying()) return;
+                    // 切换至UI线程
+                    mProgressBar.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mProgressBar.setProgress(mMusicService.getPermillage());
+                        }
+                    });
+                }
+            }, 100, 100);
         }
 
         @Override
@@ -96,6 +136,14 @@ public class MusicActivity extends BaseActivity {
         mMusicService.next();
     }
 
+    @OnClick(R.id.tv_loop) void onLoopClick(View view) {
+        Log.i("MusicActivity", "onLoopClick");
+        boolean loop = mMusicService.isLoop();
+        mMusicService.setLoop(loop=!loop);
+        TextView textView = findViewById(R.id.tv_loop);
+        textView.setText(loop?R.string.loop:R.string.single_song);
+    }
+
     @OnClick(R.id.tv_empty) void onEmptyClick(View view) {
         Log.i("MusicActivity", "onEmptyClick");
     }
@@ -103,6 +151,7 @@ public class MusicActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         unbindService(serviceConnection);
+        mTimer.cancel();
         super.onDestroy();
     }
 }

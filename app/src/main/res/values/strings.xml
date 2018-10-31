@@ -31,4 +31,6 @@
     <string name="cancel">取消</string>
 
     <string name="no_music">请先在\n/storage/emulated/0/Music/Favourite/\n添加音乐</string>
+    <string name="loop">循环</string>
+    <string name="single_song">单曲</string>
 </resources>

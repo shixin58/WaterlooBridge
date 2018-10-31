@@ -21,6 +21,7 @@ public class VictorApplication extends Application {
         mApplication = this;
 
         ResUtils.setContext(this);
-        PreferenceUtils.initialize(this, "victor_utils");
+
+        PreferenceUtils.initialize(this, "victor_prefs");
     }
 }
