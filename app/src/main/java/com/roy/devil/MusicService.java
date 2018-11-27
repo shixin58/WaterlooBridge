@@ -18,7 +18,7 @@ import androidx.annotation.Nullable;
 /**
  * <p>Created by shixin on 2018/10/20.
  */
-public class MusicService extends Service implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
+public class MusicService extends Service implements MediaPlayer.OnPreparedListener {
     private int mIndex = 0;
     List<String> mPathList = MusicRepository.getPathList();
     private MediaPlayer mMediaPlayer;
@@ -30,15 +30,6 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     public void onPrepared(MediaPlayer mp) {
         String title = mPathList.get(mIndex).substring(mPathList.get(mIndex).lastIndexOf('/')+1);
         Toast.makeText(this, "准备播放:\n"+title, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onCompletion(MediaPlayer mp) {
-        String title = mPathList.get(mIndex).substring(mPathList.get(mIndex).lastIndexOf('/')+1);
-        Toast.makeText(this, title+"\n结束播放", Toast.LENGTH_SHORT).show();
-        if(loop) {
-            next();
-        }
     }
 
     public boolean isLoop() {
@@ -64,7 +55,6 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     private void initMediaPlayer() {
         mMediaPlayer = new MediaPlayer();
         mMediaPlayer.setOnPreparedListener(this);
-        mMediaPlayer.setOnCompletionListener(this);
         try {
             mMediaPlayer.setDataSource(mPathList.get(0));
             mMediaPlayer.prepare();
@@ -160,6 +150,10 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
 
     public void setOnSeekCompleteListener(@NonNull MediaPlayer.OnSeekCompleteListener onSeekCompleteListener) {
         mMediaPlayer.setOnSeekCompleteListener(onSeekCompleteListener);
+    }
+
+    public void setOnCompletionListener(MediaPlayer.OnCompletionListener onCompletionListener) {
+        mMediaPlayer.setOnCompletionListener(onCompletionListener);
     }
 
     @Override

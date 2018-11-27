@@ -4,12 +4,15 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.drawable.ClipDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.bride.baselib.BaseActivity;
@@ -40,6 +43,12 @@ public class MusicActivity extends BaseActivity {
     TextView mTvEmpty;
     @BindView(R.id.progress_bar)
     ProgressBar mProgressBar;
+    @BindView(R.id.seek_bar)
+    SeekBar mSeekBar;
+    @BindView(R.id.tv_play)
+    TextView mTvPlay;
+
+    private boolean mFlagPlay = false;
 
     private MusicService mMusicService;
     private Timer mTimer = new Timer();
@@ -69,6 +78,8 @@ public class MusicActivity extends BaseActivity {
             @Override
             public void onItemClick(View view, int i) {
                 mMusicService.play(i);
+                mFlagPlay = true;
+                mTvPlay.setText(R.string.play);
             }
         });
         mProgressBar.setOnLongClickListener(new View.OnLongClickListener() {
@@ -78,6 +89,28 @@ public class MusicActivity extends BaseActivity {
                 return true;
             }
         });
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if(fromUser) {
+                    mMusicService.seek(progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        ImageView imageView = findViewById(R.id.iv_clip);
+        ClipDrawable clipDrawable = (ClipDrawable) imageView.getDrawable();
+        clipDrawable.setLevel(40 * 100);
     }
 
     private void initService() {
@@ -93,6 +126,20 @@ public class MusicActivity extends BaseActivity {
                 @Override
                 public void onSeekComplete(MediaPlayer mp) {
                     mProgressBar.setProgress(mMusicService.getPermillage());
+                    mSeekBar.setProgress(mMusicService.getPermillage());
+                }
+            });
+            mMusicService.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    if(mMusicService.isLoop()) {
+                        mMusicService.next();
+                        mFlagPlay = true;
+                        mTvPlay.setText(R.string.play);
+                    }else {
+                        mFlagPlay = false;
+                        mTvPlay.setText(R.string.pause);
+                    }
                 }
             });
             mTimer.schedule(new TimerTask() {
@@ -104,6 +151,7 @@ public class MusicActivity extends BaseActivity {
                         @Override
                         public void run() {
                             mProgressBar.setProgress(mMusicService.getPermillage());
+                            mSeekBar.setProgress(mMusicService.getPermillage());
                         }
                     });
                 }
@@ -119,21 +167,29 @@ public class MusicActivity extends BaseActivity {
     @OnClick(R.id.tv_play) void onPlayClick(View view) {
         Log.i("MusicActivity", "onPlayClick");
         mMusicService.playOrPause();
+        mFlagPlay = !mFlagPlay;
+        mTvPlay.setText(mFlagPlay ?R.string.play:R.string.pause);
     }
 
     @OnClick(R.id.tv_stop) void onStopClick(View view) {
         Log.i("MusicActivity", "onStopClick");
         mMusicService.stop();
+        mFlagPlay = false;
+        mTvPlay.setText(R.string.pause);
     }
 
     @OnClick(R.id.tv_previous) void onPreviousClick(View view) {
         Log.i("MusicActivity", "onPreviousClick");
         mMusicService.previous();
+        mFlagPlay = true;
+        mTvPlay.setText(R.string.play);
     }
 
     @OnClick(R.id.tv_next) void onNextClick(View view) {
         Log.i("MusicActivity", "onNextClick");
         mMusicService.next();
+        mFlagPlay = true;
+        mTvPlay.setText(R.string.play);
     }
 
     @OnClick(R.id.tv_loop) void onLoopClick(View view) {
@@ -150,7 +206,9 @@ public class MusicActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        unbindService(serviceConnection);
+        if(mMusicService != null) {
+            unbindService(serviceConnection);
+        }
         mTimer.cancel();
         super.onDestroy();
     }

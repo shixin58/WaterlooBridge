@@ -15,7 +15,8 @@
         app:layout_constraintRight_toLeftOf="@id/tv_stop"
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center"
-        android:text="播放"/>
+        android:text="@string/pause"
+        tools:text="@string/play"/>
 
     <TextView
         android:id="@+id/tv_stop"
@@ -65,6 +66,8 @@
         android:id="@+id/progress_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:minHeight="20dp"
+        android:maxHeight="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_play"
@@ -72,10 +75,33 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         style="@android:style/Widget.ProgressBar.Horizontal"
+        android:progressDrawable="@drawable/bg_progress_bar"
         android:min="0"
         android:max="1000"
         android:progress="0"
-        tools:progress="200"/>
+        android:secondaryProgress="1000"
+        tools:progress="200"
+        tools:secondaryProgress="300"/>
+
+    <!--style="@android:style/Widget.DeviceDefault.SeekBar"-->
+    <SeekBar
+        android:id="@+id/seek_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar"
+        android:layout_marginTop="20dp"
+        android:min="0"
+        android:max="1000"
+        android:progress="0"
+        android:secondaryProgress="1000"
+        tools:progress="200"
+        tools:secondaryProgress="500"
+        android:minHeight="5dp"
+        android:maxHeight="5dp"
+        android:progressDrawable="@drawable/bg_progress_bar"
+        android:thumb="@drawable/shape_circle"/>
 
     <!-- 设置高度类比ScrollView -->
     <androidx.recyclerview.widget.RecyclerView
@@ -84,7 +110,7 @@
         android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/progress_bar"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="20dp"/>
 
@@ -100,4 +126,14 @@
         android:visibility="gone"
         android:gravity="center"
         android:text="@string/no_music"/>
+
+    <ImageView
+        android:id="@+id/iv_clip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar"
+        android:src="@drawable/clip_img"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
