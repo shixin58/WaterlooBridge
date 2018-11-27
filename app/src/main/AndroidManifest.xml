@@ -51,7 +51,8 @@
 
         <activity android:name=".activities.MusicActivity"
             android:screenOrientation="portrait"
-            android:label="@string/music"/>
+            android:label="@string/music"
+            android:launchMode="singleTop"/>
 
         <service android:name=".MusicService"/>
     </application>

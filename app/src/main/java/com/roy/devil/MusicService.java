@@ -1,12 +1,16 @@
 package com.roy.devil;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
 import android.widget.Toast;
 
+import com.roy.devil.activities.MusicActivity;
 import com.roy.devil.repository.MusicRepository;
 
 import java.io.IOException;
@@ -50,6 +54,19 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     public void onCreate() {
         super.onCreate();
         initMediaPlayer();
+
+        // 点通知打开MainActivity
+        Intent intent = new Intent(this, MusicActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Notification notification = new Notification.Builder(this)
+                .setContentTitle("标题")
+                .setContentText("有消息了")
+                .setSmallIcon(R.drawable.ic_notification)/* 在statusBar显示 */
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_notification))
+                .setContentIntent(pendingIntent)
+                .build();
+        // 以可见进程的模式启动
+        startForeground(1, notification);
     }
 
     private void initMediaPlayer() {

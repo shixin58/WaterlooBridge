@@ -61,6 +61,12 @@ public class MusicActivity extends BaseActivity {
         initView();
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        // singleTop
+    }
+
     private void initView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
