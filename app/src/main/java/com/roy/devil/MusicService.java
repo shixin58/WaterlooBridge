@@ -1,12 +1,17 @@
 package com.roy.devil;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Binder;
+import android.os.Build;
 import android.os.IBinder;
 import android.widget.Toast;
 
@@ -18,6 +23,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 
 /**
  * <p>Created by shixin on 2018/10/20.
@@ -54,19 +60,7 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     public void onCreate() {
         super.onCreate();
         initMediaPlayer();
-
-        // 点通知打开MainActivity
-        Intent intent = new Intent(this, MusicActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification notification = new Notification.Builder(this)
-                .setContentTitle("标题")
-                .setContentText("有消息了")
-                .setSmallIcon(R.drawable.ic_notification)/* 在statusBar显示 */
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_notification))
-                .setContentIntent(pendingIntent)
-                .build();
-        // 以可见进程的模式启动
-        startForeground(1, notification);
+        setNotification();
     }
 
     private void initMediaPlayer() {
@@ -78,6 +72,31 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setNotification() {
+        String channelId = "";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            channelId = "my_service";
+            NotificationChannel notificationChannel = new NotificationChannel(channelId,
+                    "my background service", NotificationManager.IMPORTANCE_NONE);
+            notificationChannel.setLightColor(Color.BLUE);
+            notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+        // 点通知打开MainActivity
+        Intent intent = new Intent(this, MusicActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Notification notification = new NotificationCompat.Builder(this, channelId)
+                .setContentTitle("标题")
+                .setContentText("有消息了")
+                .setSmallIcon(R.drawable.ic_notification)/* 在statusBar显示 */
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_notification))
+                .setContentIntent(pendingIntent)
+                .build();
+        // 以可见进程的模式启动
+        startForeground(1, notification);
     }
 
     @Nullable
