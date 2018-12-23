@@ -55,12 +55,28 @@ android {
         }
     }
 
+    // 批量修改apk名称
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            if ('release' == variant.buildType.name) {
+                outputFileName = "WaterlooBridge_${variant.productFlavors[0].name}_${variant.productFlavors[1].name}" +
+                        "_v${variant.versionName}_${buildTime()}.apk"
+            }
+        }
+    }
+
     lintOptions {
         disable 'Typos'
         abortOnError false
         absolutePaths false
         lintConfig file('lint.xml')
     }
+}
+
+static def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMdd')
+    return formattedDate
 }
 
 dependencies {
