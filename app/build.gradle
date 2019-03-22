@@ -71,6 +71,11 @@ android {
         absolutePaths false
         lintConfig file('lint.xml')
     }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 static def buildTime() {
