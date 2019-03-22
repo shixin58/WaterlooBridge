@@ -8,9 +8,6 @@ import android.view.ViewGroup;
 import com.bride.baselib.BaseFragment;
 import com.roy.devil.R;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 /**
  * <p>Created by shixin on 2018/6/6.
  */
@@ -25,9 +22,8 @@ public class BlankFragment extends BaseFragment {
         return fragment;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_blank, container, false);
     }
 }

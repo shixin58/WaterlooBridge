@@ -13,7 +13,6 @@ import com.roy.devil.specific.WidgetUtils;
 
 import java.util.List;
 
-import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.BindViews;
@@ -35,7 +34,7 @@ public class ViewPagerActivity extends BaseActivity implements ViewPager.OnPageC
     ViewPager mViewPager;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager);
         ButterKnife.bind(this);

@@ -85,7 +85,7 @@ static def buildTime() {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
@@ -95,6 +95,4 @@ dependencies {
 
     implementation 'com.jakewharton:butterknife:10.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
-
-    implementation 'com.github.shixin58:KillBill:v0.7.2'
 }

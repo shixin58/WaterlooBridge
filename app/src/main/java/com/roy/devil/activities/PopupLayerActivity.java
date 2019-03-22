@@ -13,15 +13,13 @@ import com.roy.devil.specific.WidgetUtils;
 import com.roy.devil.widget.BottomChooseDialog;
 import com.roy.devil.widget.PrivacyPolicyDialog;
 
-import androidx.annotation.Nullable;
-
 /**
  * <p>Created by shixin on 2018/4/7.
  */
 public class PopupLayerActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_layer);
         initView();

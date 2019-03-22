@@ -11,7 +11,6 @@ import com.roy.devil.widget.LazyViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
@@ -27,7 +26,7 @@ public class LazyViewPagerActivity extends BaseActivity implements ViewPager.OnP
     LazyViewPager mViewPager;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lazy_view_pager);
         ButterKnife.bind(this);

@@ -2,18 +2,17 @@ package com.roy.devil;
 
 import android.os.Bundle;
 
+import com.bride.baselib.BaseActivity;
 import com.roy.devil.fragment.HomeFragment;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 /**
  * <p>Created by shixin on 2018/4/1.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();

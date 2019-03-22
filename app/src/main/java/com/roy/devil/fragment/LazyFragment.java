@@ -12,8 +12,6 @@ import com.bride.baselib.BaseFragment;
 import com.roy.devil.R;
 import com.roy.devil.widget.LazyFragmentPagerAdapter;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import butterknife.ButterKnife;
@@ -53,9 +51,8 @@ public class LazyFragment extends BaseFragment implements LazyFragmentPagerAdapt
         super.onDetach();
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lazy, container, false);
         ButterKnife.bind(this, view);
         Log.i("lifecycle", "onCreateView "+mPosition);
@@ -63,7 +60,7 @@ public class LazyFragment extends BaseFragment implements LazyFragmentPagerAdapt
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Log.i("lifecycle", "onActivityCreated "+mPosition);
         initData();

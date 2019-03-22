@@ -11,9 +11,6 @@ import com.bride.baselib.BaseFragment;
 import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 /**
  * <p>Created by shixin on 2018/4/22.
  */
@@ -58,14 +55,13 @@ public class RankingListFragment extends BaseFragment {
         return fragment;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_ranking_list, container, false);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         int carLevel = getArguments().getInt(KEY_CAR_LEVEL, CAR_LEVEL_JINCOUXINGCHE);
         String carLevelName = CAR_LEVEL_NAMES.get(carLevel);

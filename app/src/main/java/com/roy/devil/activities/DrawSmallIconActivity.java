@@ -10,8 +10,6 @@ import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
 import com.roy.devil.specific.DrawUtils;
 
-import androidx.annotation.Nullable;
-
 /**
  * 绘制小icon
  * <p>Created by shixin on 2018/4/1.
@@ -19,7 +17,7 @@ import androidx.annotation.Nullable;
 public class DrawSmallIconActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw_small_icon);
         initView();

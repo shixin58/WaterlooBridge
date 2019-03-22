@@ -19,15 +19,14 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bride.baselib.BaseActivity;
 import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by shixin on 2017/10/19.
  */
-public class PrivacyPolicyDialog extends AppCompatActivity {
+public class PrivacyPolicyDialog extends BaseActivity {
 
     public static void show(Context context){
         Intent intent = new Intent(context, PrivacyPolicyDialog.class);

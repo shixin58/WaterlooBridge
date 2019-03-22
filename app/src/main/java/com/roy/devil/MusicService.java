@@ -21,8 +21,6 @@ import com.roy.devil.repository.MusicRepository;
 import java.io.IOException;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 /**
@@ -99,7 +97,6 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         startForeground(1, notification);
     }
 
-    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return binder;
@@ -184,7 +181,7 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         return 1000*mMediaPlayer.getCurrentPosition()/mMediaPlayer.getDuration();
     }
 
-    public void setOnSeekCompleteListener(@NonNull MediaPlayer.OnSeekCompleteListener onSeekCompleteListener) {
+    public void setOnSeekCompleteListener(MediaPlayer.OnSeekCompleteListener onSeekCompleteListener) {
         mMediaPlayer.setOnSeekCompleteListener(onSeekCompleteListener);
     }
 
