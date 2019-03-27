@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -86,11 +87,12 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         // 点通知打开MainActivity
         Intent intent = new Intent(this, MusicActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_notification);
         Notification notification = new NotificationCompat.Builder(this, channelId)
-                .setContentTitle("标题")
-                .setContentText("有消息了")
-                .setSmallIcon(R.drawable.ic_notification)/* 在statusBar显示 */
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_notification))
+                .setContentTitle("Music")
+                .setContentText("Less is more")
+                .setSmallIcon(R.mipmap.ic_launcher)/* 在statusBar显示 */
+                .setLargeIcon(largeIcon)
                 .setContentIntent(pendingIntent)
                 .build();
         // 以可见进程的模式启动

@@ -43,8 +43,9 @@ public class LazyViewPagerActivity extends BaseActivity implements ViewPager.OnP
         fragmentList.add(fragment2);
         LazyFragment fragment3 = LazyFragment.newInstance(3);
         fragmentList.add(fragment3);
+        mViewPager.setOffscreenPageLimit(1);
         mViewPager.setAdapter(new ConcreteLazyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList));
-        mViewPager.setOnPageChangeListener(this);
+        mViewPager.addOnPageChangeListener(this);
     }
 
     @Override
