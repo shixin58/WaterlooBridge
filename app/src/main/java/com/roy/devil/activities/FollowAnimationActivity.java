@@ -3,6 +3,7 @@ package com.roy.devil.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import com.roy.devil.R;
 import com.roy.devil.adapter.FollowAnimationAdapter;
 import com.roy.devil.specific.FollowAnimationUtils;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -22,8 +24,11 @@ import butterknife.ButterKnife;
  * 关注动画
  * <p>Created by shixin on 2018/4/1.
  */
-public class FollowAnimationActivity extends BaseActivity implements View.OnClickListener {
+public class FollowAnimationActivity extends BaseActivity implements View.OnClickListener,
+        SwipeRefreshLayout.OnRefreshListener {
 
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.list_view)
     ListView listView;
     @BindView(R.id.root_inventory)
@@ -32,6 +37,8 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
     TextView buttonInventory;
     @BindView(R.id.iv_point)
     ImageView ivPoint;
+
+    private Handler handler = new Handler();
 
     public static void openActivity(Context context) {
         Intent intent = new Intent(context, FollowAnimationActivity.class);
@@ -47,6 +54,7 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
     }
 
     private void initView() {
+        swipeRefreshLayout.setOnRefreshListener(this);
         FollowAnimationAdapter followAnimationAdapter = new FollowAnimationAdapter(this);
         listView.setAdapter(followAnimationAdapter);
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -91,5 +99,15 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 2000L);
     }
 }
