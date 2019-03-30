@@ -97,4 +97,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
     implementation 'com.github.castorflex.verticalviewpager:library:19.0.1'
+
+    implementation group: 'com.github.bumptech.glide', name: 'glide', version: '4.9.0'
+    annotationProcessor group: 'com.github.bumptech.glide', name: 'compiler', version: '4.9.0'
 }
