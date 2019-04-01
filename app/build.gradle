@@ -98,6 +98,10 @@ dependencies {
 
     implementation 'com.github.castorflex.verticalviewpager:library:19.0.1'
 
+    debugImplementation group: 'com.squareup.leakcanary', name: 'leakcanary-android', version: '1.6.3'
+    releaseImplementation group: 'com.squareup.leakcanary', name: 'leakcanary-android-no-op', version: '1.6.3'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
+
     implementation group: 'com.github.bumptech.glide', name: 'glide', version: '4.9.0'
     annotationProcessor group: 'com.github.bumptech.glide', name: 'compiler', version: '4.9.0'
 }
