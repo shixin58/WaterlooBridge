@@ -25,6 +25,7 @@ import java.util.List;
 import androidx.core.app.NotificationCompat;
 
 /**
+ * 在主进程主线程bindService，在主进程主线程执行Service
  * <p>Created by shixin on 2018/10/20.
  */
 public class MusicService extends Service implements MediaPlayer.OnPreparedListener {
@@ -100,8 +101,18 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     }
 
     @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
     public IBinder onBind(Intent intent) {
         return binder;
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        return super.onUnbind(intent);
     }
 
     public void playOrPause() {
