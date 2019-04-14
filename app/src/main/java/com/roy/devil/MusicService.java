@@ -205,6 +205,7 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     @Override
     public void onDestroy() {
         mMediaPlayer.release();
+        stopForeground(true);
         super.onDestroy();
     }
 }

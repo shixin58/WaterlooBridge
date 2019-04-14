@@ -4,10 +4,12 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:name=".VictorApplication"
         android:allowBackup="true"
+        android:persistent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -53,8 +55,27 @@
         <activity android:name=".activities.MusicActivity"
             android:screenOrientation="portrait"
             android:label="@string/music"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="max"
+                    android:host="devil"
+                    android:pathPrefix="/music"/>
+            </intent-filter>
+        </activity>
 
         <service android:name=".MusicService"/>
+
+        <receiver android:name=".CustomBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.intent.action.PACKAGE_RESTARTED"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

@@ -8,12 +8,14 @@ import android.graphics.drawable.ClipDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bride.baselib.BaseActivity;
 import com.bride.baselib.widget.BaseRecyclerAdapter;
@@ -36,6 +38,8 @@ import butterknife.OnClick;
  * <p>Created by shixin on 2018/10/20.
  */
 public class MusicActivity extends BaseActivity {
+    private static final String TAG = MusicActivity.class.getSimpleName();
+    public static final String KEY_FROM = "from";
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
@@ -58,6 +62,7 @@ public class MusicActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
         ButterKnife.bind(this);
+        initData();
         initView();
     }
 
@@ -65,6 +70,15 @@ public class MusicActivity extends BaseActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         // singleTop
+    }
+
+    private void initData() {
+        String from = getIntent().getStringExtra(KEY_FROM);
+        if (!TextUtils.isEmpty(from) || (getIntent().getData() != null
+                && !TextUtils.isEmpty(from=getIntent().getData().getQueryParameter(KEY_FROM)))) {
+            Toast.makeText(this.getApplicationContext(), "从"+from+"开启"+TAG, Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "从"+from+"开启"+TAG);
+        }
     }
 
     private void initView() {
@@ -171,35 +185,35 @@ public class MusicActivity extends BaseActivity {
     };
 
     @OnClick(R.id.tv_play) void onPlayClick(View view) {
-        Log.i("MusicActivity", "onPlayClick");
+        Log.i(TAG, "onPlayClick");
         mMusicService.playOrPause();
         mFlagPlay = !mFlagPlay;
         mTvPlay.setText(mFlagPlay ?R.string.play:R.string.pause);
     }
 
     @OnClick(R.id.tv_stop) void onStopClick(View view) {
-        Log.i("MusicActivity", "onStopClick");
+        Log.i(TAG, "onStopClick");
         mMusicService.stop();
         mFlagPlay = false;
         mTvPlay.setText(R.string.pause);
     }
 
     @OnClick(R.id.tv_previous) void onPreviousClick(View view) {
-        Log.i("MusicActivity", "onPreviousClick");
+        Log.i(TAG, "onPreviousClick");
         mMusicService.previous();
         mFlagPlay = true;
         mTvPlay.setText(R.string.play);
     }
 
     @OnClick(R.id.tv_next) void onNextClick(View view) {
-        Log.i("MusicActivity", "onNextClick");
+        Log.i(TAG, "onNextClick");
         mMusicService.next();
         mFlagPlay = true;
         mTvPlay.setText(R.string.play);
     }
 
     @OnClick(R.id.tv_loop) void onLoopClick(View view) {
-        Log.i("MusicActivity", "onLoopClick");
+        Log.i(TAG, "onLoopClick");
         boolean loop = mMusicService.isLoop();
         mMusicService.setLoop(loop=!loop);
         TextView textView = findViewById(R.id.tv_loop);
@@ -207,7 +221,7 @@ public class MusicActivity extends BaseActivity {
     }
 
     @OnClick(R.id.tv_empty) void onEmptyClick(View view) {
-        Log.i("MusicActivity", "onEmptyClick");
+        Log.i(TAG, "onEmptyClick");
     }
 
     @Override
