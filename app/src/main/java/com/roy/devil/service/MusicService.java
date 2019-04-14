@@ -1,4 +1,4 @@
-package com.roy.devil;
+package com.roy.devil.service;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.widget.Toast;
 
+import com.roy.devil.R;
 import com.roy.devil.activities.MusicActivity;
 import com.roy.devil.repository.MusicRepository;
 

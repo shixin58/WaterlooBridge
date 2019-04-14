@@ -68,10 +68,13 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".MusicService"/>
+        <service android:name=".service.MusicService"/>
+
+        <service android:name=".service.DaemonService"/>
 
         <receiver android:name=".CustomBootReceiver">
             <intent-filter>
+                <action android:name="com.roy.devil.action.MUSIC"/>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.intent.action.USER_PRESENT"/>
                 <action android:name="android.intent.action.PACKAGE_RESTARTED"/>

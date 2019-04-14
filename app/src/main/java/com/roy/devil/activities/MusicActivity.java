@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.bride.baselib.BaseActivity;
 import com.bride.baselib.widget.BaseRecyclerAdapter;
-import com.roy.devil.MusicService;
+import com.roy.devil.service.MusicService;
 import com.roy.devil.R;
 import com.roy.devil.adapter.MusicAdapter;
 import com.roy.devil.repository.MusicRepository;
