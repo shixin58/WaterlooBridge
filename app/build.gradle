@@ -86,17 +86,17 @@ static def buildTime() {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation group: 'androidx.appcompat', name: 'appcompat', version: '1.0.2'
+    implementation group: 'androidx.cardview', name: 'cardview', version: '1.0.0'
+    implementation group: 'androidx.constraintlayout', name: 'constraintlayout', version: '1.1.3'
 
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'com.google.android:flexbox:1.0.0'
+    implementation group: 'com.google.android.material', name: 'material', version: '1.0.0'
+    implementation group: 'com.google.android', name: 'flexbox', version: '1.0.0'
 
-    implementation 'com.jakewharton:butterknife:10.1.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    implementation group: 'com.jakewharton', name: 'butterknife', version: '10.1.0'
+    annotationProcessor group: 'com.jakewharton', name: 'butterknife-compiler', version: '10.1.0'
 
-    implementation 'com.github.castorflex.verticalviewpager:library:19.0.1'
+    implementation group: 'com.github.castorflex.verticalviewpager', name: 'library', version: '19.0.1'
 
     debugImplementation group: 'com.squareup.leakcanary', name: 'leakcanary-android', version: '1.6.3'
     releaseImplementation group: 'com.squareup.leakcanary', name: 'leakcanary-android-no-op', version: '1.6.3'

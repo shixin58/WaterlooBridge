@@ -18,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
  * </ul>
  */
 public class LazyViewPager extends ViewPager {
+	private static final String TAG = LazyViewPager.class.getSimpleName();
 
 	private static final float DEFAULT_OFFSET = 0.5f;
 
@@ -54,7 +55,7 @@ public class LazyViewPager extends ViewPager {
 
 	@Override
 	protected void onPageScrolled(int position, float offset, int offsetPixels) {
-		Log.i("onPageScrolled", getCurrentItem()+", "+position+", "+offset+", "+offsetPixels);
+		Log.i(TAG, "onPageScrolled - "+getCurrentItem()+", "+position+", "+offset+", "+offsetPixels);
 		if (mLazyPagerAdapter != null) {
 			if (getCurrentItem() == position) {
 				int lazyPosition = position + 1;

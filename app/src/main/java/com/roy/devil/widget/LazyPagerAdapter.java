@@ -3,6 +3,7 @@ package com.roy.devil.widget;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 /**
@@ -11,7 +12,7 @@ import androidx.viewpager.widget.PagerAdapter;
  */
 public abstract class LazyPagerAdapter<T> extends PagerAdapter {
 
-    protected SparseArray<T> mLazyItems = new SparseArray<T>();
+    protected SparseArray<T> mLazyItems = new SparseArray<>();
     private T mCurrentItem;
 
     /**
@@ -52,7 +53,7 @@ public abstract class LazyPagerAdapter<T> extends PagerAdapter {
      * to prevent {@link LazyViewPager#onPageScrolled(int, float, int)} not working when the offset of {@link LazyViewPager} is too big
      */
     @Override
-    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+    public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         T item = addLazyItem(container, position);
         if(item != null) {
             mCurrentItem = item;

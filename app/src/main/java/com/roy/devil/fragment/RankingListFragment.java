@@ -1,6 +1,8 @@
 package com.roy.devil.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +13,13 @@ import com.bride.baselib.BaseFragment;
 import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
 
+import androidx.annotation.Nullable;
+
 /**
  * <p>Created by shixin on 2018/4/22.
  */
 public class RankingListFragment extends BaseFragment {
+    private static final String TAG = RankingListFragment.class.getSimpleName();
     public static final String KEY_CAR_LEVEL = "key_car_level";
     /** 紧凑型 */
     public static int CAR_LEVEL_JINCOUXINGCHE = 3;
@@ -47,6 +52,8 @@ public class RankingListFragment extends BaseFragment {
          CAR_LEVEL_NAMES.append(CAR_LEVEL_MPV, ResUtils.getString(R.string.car_level_mpv));
     }
 
+    private int mCarLevel;
+
     public static RankingListFragment newInstance(int carLevel) {
         RankingListFragment fragment = new RankingListFragment();
         Bundle bundle = new Bundle();
@@ -56,16 +63,79 @@ public class RankingListFragment extends BaseFragment {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCarLevel = getArguments().getInt(KEY_CAR_LEVEL, CAR_LEVEL_JINCOUXINGCHE);
+        Log.i(TAG, "onAttach - "+mCarLevel);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i(TAG, "onCreate - "+mCarLevel);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.i(TAG, "onCreateView - "+mCarLevel);
         return inflater.inflate(R.layout.fragment_ranking_list, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i(TAG, "onActivityCreated - "+mCarLevel);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        int carLevel = getArguments().getInt(KEY_CAR_LEVEL, CAR_LEVEL_JINCOUXINGCHE);
-        String carLevelName = CAR_LEVEL_NAMES.get(carLevel);
+        Log.i(TAG, "onViewCreated - "+mCarLevel);
+
+        String carLevelName = CAR_LEVEL_NAMES.get(mCarLevel);
         TextView tvCarLevel = view.findViewById(R.id.tv_car_level);
         tvCarLevel.setText(carLevelName);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart - "+mCarLevel);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume - "+mCarLevel);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause - "+mCarLevel);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop - "+mCarLevel);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i(TAG, "onDestroyView - "+mCarLevel);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy - "+mCarLevel);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.i(TAG, "onDetach - "+mCarLevel);
     }
 }
