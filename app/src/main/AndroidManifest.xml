@@ -48,6 +48,10 @@
             android:screenOrientation="portrait"
             android:label="@string/view_pager"/>
 
+        <activity android:name=".activities.ViewPager2Activity"
+            android:launchMode="singleTask"
+            android:label="@string/view_pager_2"/>
+
         <activity android:name=".activities.LazyViewPagerActivity"
             android:screenOrientation="portrait"
             android:label="@string/lazy_view_pager"/>

@@ -59,6 +59,7 @@ public class RankingListFragment extends BaseFragment {
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_CAR_LEVEL, carLevel);
         fragment.setArguments(bundle);
+        Log.i(TAG, "new RankingListFragment() "+carLevel);
         return fragment;
     }
 

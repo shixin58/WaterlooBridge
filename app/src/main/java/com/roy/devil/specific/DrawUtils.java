@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -52,7 +53,11 @@ public class DrawUtils {
         canvas.drawText(text, 40-textRect.centerX(), 40-paint.descent(), paint);
         canvas.rotate(-45, 40, 40);
 
-        view.setBackgroundDrawable(new BitmapDrawable(context.getResources(), bitmap));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            view.setBackground(new BitmapDrawable(context.getResources(), bitmap));
+        } else {
+            view.setBackgroundDrawable(new BitmapDrawable(context.getResources(), bitmap));
+        }
     }
 
     /**

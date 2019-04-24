@@ -6,6 +6,7 @@
     <string name="custom_widget">自定义widget</string>
     <string name="popup_layer">弹窗</string>
     <string name="view_pager">ViewPager</string>
+    <string name="view_pager_2">ViewPager2</string>
     <string name="lazy_view_pager">LazyViewPager</string>
     <string name="music">Music</string>
 
