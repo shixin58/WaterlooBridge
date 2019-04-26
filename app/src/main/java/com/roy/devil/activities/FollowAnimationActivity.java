@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ImageView;
@@ -11,12 +14,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.bride.baselib.BaseActivity;
 import com.roy.devil.R;
 import com.roy.devil.adapter.FollowAnimationAdapter;
 import com.roy.devil.specific.FollowAnimationUtils;
 
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -95,7 +99,21 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
                 if(buttonInventory.getVisibility()==View.GONE) {
                     FollowAnimationUtils.expandInventory(rootInventory);
                 }else {
-                    Toast.makeText(this, "打开购物车", Toast.LENGTH_SHORT).show();
+                    HandlerThread handlerThread = new HandlerThread("Thread - Toast");
+                    handlerThread.start();
+                    Handler handler = new Handler(handlerThread.getLooper()) {
+                        @Override
+                        public void handleMessage(Message msg) {
+                            super.handleMessage(msg);
+                            switch (msg.what) {
+                                case 1:
+                                    Log.i(TAG, "handleMessage "+Thread.currentThread().getName());
+                                    Toast.makeText(FollowAnimationActivity.this.getApplicationContext(), "打开购物车", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
+                        }
+                    };
+                    handler.sendEmptyMessage(1);
                 }
                 break;
         }

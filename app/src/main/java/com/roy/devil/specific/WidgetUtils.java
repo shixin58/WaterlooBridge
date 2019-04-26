@@ -89,8 +89,8 @@ public class WidgetUtils {
     public static PopupWindow initSerialFollowTip(Context context, final View parent) {
         if(AppUtils.getVersionCode()==1
                 &&!PreferenceUtils.getBoolean(PreferenceFinals.SERIAL_SUMMARY_INVENTORY_TIP)) {
-            final View popupView = LayoutInflater.from(context).inflate(R.layout.view_serial_follow_popup_window, null);
-            ImageView ivArrow = (ImageView) popupView.findViewById(R.id.arrow);
+            final View popupView = LayoutInflater.from(context.getApplicationContext()).inflate(R.layout.view_serial_follow_popup_window, null);
+            ImageView ivArrow = popupView.findViewById(R.id.arrow);
             ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) ivArrow.getLayoutParams();
             layoutParams.leftToLeft = ConstraintLayout.LayoutParams.UNSET;
             layoutParams.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID;
@@ -133,7 +133,7 @@ public class WidgetUtils {
         if (AppUtils.getVersionCode()==1
                 &&!PreferenceUtils.getBoolean(PreferenceFinals.SELECT_CAR_HOME_INVENTORY_TIP)) {
             final View popupView = LayoutInflater.from(context).inflate(R.layout.view_serial_follow_popup_window, null);
-            TextView tvSlogan = (TextView) popupView.findViewById(R.id.tvSlogan);
+            TextView tvSlogan = popupView.findViewById(R.id.tvSlogan);
             tvSlogan.setText(R.string.select_car_inventory_entry_guide);
             final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             // 点popupWindow外面消失

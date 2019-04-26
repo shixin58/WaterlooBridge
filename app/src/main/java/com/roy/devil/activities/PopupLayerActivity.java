@@ -14,6 +14,11 @@ import com.roy.devil.widget.BottomChooseDialog;
 import com.roy.devil.widget.PrivacyPolicyDialog;
 
 /**
+ * Toast打开可用Application Context, 可在任意线程打开。
+ * LayoutInflater#from(Context)#inflate可用Application Context。
+ * PopupWindow showAtLocation由parent提供token(View#getWindowToken())，showAsDropDown由anchor提供token(View#getApplicationWindowToken()).
+ * 用Application Context打开Dialog，报错：WindowManager$BadTokenException: Unable to add window -- token null for displayid = 0 is not valid; is your activity running?
+ * Dialog若不指定上下文，使用Context#getTheme().
  * <p>Created by shixin on 2018/4/7.
  */
 public class PopupLayerActivity extends BaseActivity implements View.OnClickListener{

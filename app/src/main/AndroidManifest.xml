@@ -38,6 +38,7 @@
             android:label="@string/custom_widget"/>
 
         <activity android:name=".activities.PopupLayerActivity"
+            android:theme="@style/AppTheme.FullScreen"
             android:screenOrientation="portrait"
             android:label="@string/popup_layer"/>
 
