@@ -44,9 +44,15 @@ public class BannerAdapter extends PagerAdapter {
             imageView = (ImageView) LayoutInflater.from(container.getContext())
                     .inflate(R.layout.banner_item, container, false);
             mImageViews.put(position, imageView);
-            Glide.with(container.getContext())
+            Glide.get(container.getContext())
+                    .getRequestManagerRetriever()
+                    .get(container.getContext())
+                    .asDrawable()
                     .load(mList.get(position))
                     .into(imageView);
+            /*Glide.with(container.getContext())
+                    .load(mList.get(position))
+                    .into(imageView);*/
         }
         container.addView(imageView);
         return imageView;
