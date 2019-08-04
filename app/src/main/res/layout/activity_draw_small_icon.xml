@@ -36,4 +36,88 @@
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:text="@string/drink"/>
+
+    <ImageView
+        android:id="@+id/iv_animation_static"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_tag"
+        android:background="@drawable/animation_list"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/tv_anim_static_start"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:layout_constraintLeft_toRightOf="@id/iv_animation_static"
+        app:layout_constraintTop_toTopOf="@id/iv_animation_static"
+        app:layout_constraintBottom_toBottomOf="@id/iv_animation_static"
+        android:onClick="onClick"
+        android:gravity="center"
+        android:text="start"/>
+
+    <TextView
+        android:id="@+id/tv_anim_static_stop"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:layout_constraintLeft_toRightOf="@id/tv_anim_static_start"
+        app:layout_constraintTop_toTopOf="@id/iv_animation_static"
+        app:layout_constraintBottom_toBottomOf="@id/iv_animation_static"
+        android:onClick="onClick"
+        android:gravity="center"
+        android:text="stop"/>
+
+    <ImageView
+        android:id="@+id/iv_animation"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_animation_static"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/tv_anim_start"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:layout_constraintLeft_toRightOf="@id/iv_animation"
+        app:layout_constraintTop_toTopOf="@id/iv_animation"
+        app:layout_constraintBottom_toBottomOf="@id/iv_animation"
+        android:onClick="onClick"
+        android:gravity="center"
+        android:text="start"/>
+
+    <TextView
+        android:id="@+id/tv_anim_stop"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:layout_constraintLeft_toRightOf="@id/tv_anim_start"
+        app:layout_constraintTop_toTopOf="@id/iv_animation"
+        app:layout_constraintBottom_toBottomOf="@id/iv_animation"
+        android:onClick="onClick"
+        android:gravity="center"
+        android:text="stop"/>
+
+    <ImageView
+        android:id="@+id/iv_state"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_animation"
+        android:background="@drawable/animation_selector"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp" />
+
+    <Switch
+        android:id="@+id/tv_check"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        app:layout_constraintLeft_toRightOf="@id/iv_state"
+        app:layout_constraintTop_toTopOf="@id/iv_state"
+        app:layout_constraintBottom_toBottomOf="@id/iv_state"
+        android:onClick="onClick"
+        android:gravity="center"
+        android:checked="false" />
 </androidx.constraintlayout.widget.ConstraintLayout>

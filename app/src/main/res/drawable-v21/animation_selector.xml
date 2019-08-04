@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AnimatedStateListDrawable -->
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/state_on"
+        android:drawable="@drawable/animation_list_1"
+        android:state_selected="false"/>
+
+    <item android:id="@+id/state_off"
+        android:drawable="@drawable/animation_list_2"
+        android:state_selected="true"/>
+
+    <transition
+        android:fromId="@id/state_on"
+        android:toId="@id/state_off">
+
+        <animation-list>
+            <item android:drawable="@drawable/animation_list_1"
+                android:duration="150"/>
+
+            <item android:drawable="@drawable/animation_list_2"
+                android:duration="150"/>
+
+            <item android:drawable="@drawable/animation_list_3"
+                android:duration="150"/>
+
+            <item android:drawable="@drawable/animation_list_4"
+                android:duration="150"/>
+        </animation-list>
+
+    </transition>
+
+</animated-selector>

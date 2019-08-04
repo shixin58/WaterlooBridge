@@ -3,6 +3,7 @@ package com.roy.devil.specific;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.graphics.Point;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -16,6 +17,7 @@ import com.roy.devil.R;
  * <p>Created by shixin on 2018/2/22.
  */
 public class FollowAnimationUtils {
+    private static final String TAG = FollowAnimationUtils.class.getSimpleName();
 
     private static final int WIDTH_DP_BUTTON_INVENTORY = 90;
     private static final int WIDTH_DP_BUTTON_FOLLOW = 50;
@@ -29,21 +31,26 @@ public class FollowAnimationUtils {
         if(buttonInventory.getVisibility()!= View.VISIBLE) {
             return;
         }
+        // tween animation补间动画。作用于View，dispatchDraw来调整画布，不改变View的大小位置。
         TranslateAnimation collapseAnimation = new TranslateAnimation(0, WIDTH_DP_BUTTON_INVENTORY* DENSITY, 0, 0);
         collapseAnimation.setDuration(300* MULTIPLE);
+        // 线性插值器，补间器。修改动画节奏，控制动画变化速率。
         collapseAnimation.setInterpolator(new LinearInterpolator());
         collapseAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
+                Log.i(TAG, "onAnimationStart");
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
+                Log.i(TAG, "onAnimationEnd");
                 buttonInventory.setVisibility(View.GONE);
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
+                Log.i(TAG, "onAnimationRepeat");
             }
         });
         collapseAnimation.setStartOffset(startOffset*MULTIPLE);
@@ -126,6 +133,7 @@ public class FollowAnimationUtils {
         int pointY = startPoint.y - (int) (30* DENSITY);
         Point controlPoint = new Point(pointX, pointY);
 
+        // 类型估值算法
         final ValueAnimator valueAnimator = ValueAnimator.ofObject(new BezierEvaluator(controlPoint), startPoint, endPoint);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override

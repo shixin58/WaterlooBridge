@@ -8,6 +8,9 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -83,6 +86,7 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
         });
         rootInventory.setOnClickListener(this);
         FollowAnimationUtils.collapseInventory(rootInventory, 1200);
+        setAnimation();
     }
 
     @Override
@@ -127,5 +131,13 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
                 swipeRefreshLayout.setRefreshing(false);
             }
         }, 2000L);
+    }
+
+    private void setAnimation() {
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.left_info);
+        LayoutAnimationController layoutAnimationController = new LayoutAnimationController(animation);
+        layoutAnimationController.setOrder(LayoutAnimationController.ORDER_RANDOM);
+        layoutAnimationController.setDelay(0.5f);
+        listView.setLayoutAnimation(layoutAnimationController);
     }
 }
