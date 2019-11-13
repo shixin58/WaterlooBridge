@@ -1,6 +1,8 @@
 package com.roy.devil.activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.bride.baselib.BaseActivity;
 import com.roy.devil.R;
@@ -34,5 +36,9 @@ public class CustomWidgetActivity extends BaseActivity {
         list.add(R.drawable.sierra);
         list.add(R.drawable.sailboat_race);
         bannerAdapter.setList(list);
+    }
+
+    public void clickElevation(View v) {
+        Toast.makeText(this, "clickElevation", Toast.LENGTH_SHORT).show();
     }
 }

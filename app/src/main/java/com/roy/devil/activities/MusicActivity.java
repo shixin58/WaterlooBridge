@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -47,6 +48,8 @@ public class MusicActivity extends BaseActivity {
     TextView mTvEmpty;
     @BindView(R.id.progress_bar)
     ProgressBar mProgressBar;
+    @BindView(R.id.view_pointer)
+    View mViewPointer;
     @BindView(R.id.seek_bar)
     SeekBar mSeekBar;
     @BindView(R.id.tv_play)
@@ -145,7 +148,11 @@ public class MusicActivity extends BaseActivity {
             mMusicService.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
                 @Override
                 public void onSeekComplete(MediaPlayer mp) {
-                    mProgressBar.setProgress(mMusicService.getPermillage());
+                    int progress = mMusicService.getPermillage();
+                    mProgressBar.setProgress(progress);
+                    ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) mViewPointer.getLayoutParams();
+                    lp.leftMargin = mProgressBar.getWidth() * progress / mProgressBar.getMax();
+                    mViewPointer.setLayoutParams(lp);
                     mSeekBar.setProgress(mMusicService.getPermillage());
                 }
             });
@@ -170,7 +177,11 @@ public class MusicActivity extends BaseActivity {
                     mProgressBar.post(new Runnable() {
                         @Override
                         public void run() {
-                            mProgressBar.setProgress(mMusicService.getPermillage());
+                            int progress = mMusicService.getPermillage();
+                            mProgressBar.setProgress(progress);
+                            ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) mViewPointer.getLayoutParams();
+                            lp.leftMargin = mProgressBar.getWidth() * progress / mProgressBar.getMax();
+                            mViewPointer.setLayoutParams(lp);
                             mSeekBar.setProgress(mMusicService.getPermillage());
                         }
                     });

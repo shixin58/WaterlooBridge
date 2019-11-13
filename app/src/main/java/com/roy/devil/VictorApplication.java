@@ -2,6 +2,7 @@ package com.roy.devil;
 
 import android.app.Application;
 
+import com.bride.baselib.PermissionUtils;
 import com.bride.baselib.PreferenceUtils;
 import com.bride.baselib.ResUtils;
 import com.squareup.leakcanary.LeakCanary;
@@ -31,5 +32,6 @@ public class VictorApplication extends Application {
         ResUtils.setContext(this);
 
         PreferenceUtils.initialize(this, "victor_prefs");
+        PermissionUtils.setContext(this);
     }
 }

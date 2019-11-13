@@ -6,8 +6,10 @@ import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.bride.baselib.BaseActivity;
+import com.bride.baselib.PermissionUtils;
 import com.roy.devil.fragment.HomeFragment;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 
 /**
@@ -22,6 +24,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        PermissionUtils.requestAllPermissions(this, 1);
     }
 
     private void initView() {
@@ -59,5 +62,10 @@ public class MainActivity extends BaseActivity {
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
