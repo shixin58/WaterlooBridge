@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="agree">agree</string>
+    <string name="confirm">confirm</string>
+    <string name="cancel">cancel</string>
+
+    <string name="loop">loop</string>
+    <string name="single_song">single</string>
+    <string name="play">play</string>
+    <string name="pause">pause</string>
+</resources>
