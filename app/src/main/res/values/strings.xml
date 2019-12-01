@@ -2,6 +2,7 @@
     <string name="app_name" translatable="false">WaterlooBridge</string>
 
     <string name="follow_animation" translatable="false">关注动画</string>
+    <string name="desc_follow_animation" translatable="false">FollowAnimationActivity: Animation/Animator贝塞尔曲线动画, ListView/SwipeRefreshLayout - 下拉刷新, LayoutAnimationController - ViewGroup动画</string>
     <string name="draw_small_icon" translatable="false">绘制小icon</string>
     <string name="custom_widget" translatable="false">自定义widget</string>
     <string name="popup_layer" translatable="false">弹窗</string>
@@ -38,4 +39,5 @@
     <string name="pause">暂停</string>
 
     <string name="desc_elevation" translatable="false">测试elevation属性</string>
+    <string name="undo" translatable="false">undo</string>
 </resources>

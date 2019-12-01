@@ -2,11 +2,15 @@ package com.roy.devil.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.roy.devil.R;
 import com.roy.devil.model.HomeModel;
 
@@ -19,8 +23,8 @@ import androidx.recyclerview.widget.RecyclerView;
 /**
  * <p>Created by shixin on 2018/4/1.
  */
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder>
-        implements View.OnClickListener{
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> implements View.OnClickListener,
+        View.OnLongClickListener {
 
     private Context mContext;
     private List<HomeModel> mList = new ArrayList<>();
@@ -50,6 +54,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         holder.tvName.setText(model.showName);
         holder.itemView.setTag(model);
         holder.itemView.setOnClickListener(this);
+        holder.itemView.setOnLongClickListener(this);
     }
 
     @Override
@@ -64,6 +69,22 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             Intent intent = new Intent(mContext, model.cls);
             mContext.startActivity(intent);
         }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        if (v.getTag() instanceof HomeModel) {
+            HomeModel model = (HomeModel) v.getTag();
+            if (!TextUtils.isEmpty(model.desc)) {
+                Snackbar snackbar = Snackbar.make(v, model.desc, Snackbar.LENGTH_INDEFINITE);
+                snackbar.setAction(R.string.undo, v1 -> {
+                    Toast.makeText(v1.getContext(), "undo", Toast.LENGTH_SHORT).show();
+                });
+                snackbar.show();
+                return true;
+            }
+        }
+        return false;
     }
 
     public static class HomeViewHolder extends RecyclerView.ViewHolder {

@@ -134,9 +134,9 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
     }
 
     private void setAnimation() {
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.left_info);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.left_in);
         LayoutAnimationController layoutAnimationController = new LayoutAnimationController(animation);
-        layoutAnimationController.setOrder(LayoutAnimationController.ORDER_RANDOM);
+        layoutAnimationController.setOrder(LayoutAnimationController.ORDER_NORMAL);
         layoutAnimationController.setDelay(0.5f);
         listView.setLayoutAnimation(layoutAnimationController);
     }

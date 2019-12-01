@@ -22,7 +22,8 @@ public class HomeRepository {
 
     public static List<HomeModel> getAllModels() {
         List<HomeModel> list = new ArrayList<>();
-        HomeModel homeModel = new HomeModel(FollowAnimationActivity.class, ResUtils.getString(R.string.follow_animation));
+        HomeModel homeModel = new HomeModel(FollowAnimationActivity.class,
+                ResUtils.getString(R.string.follow_animation), ResUtils.getString(R.string.desc_follow_animation));
         list.add(homeModel);
         HomeModel homeModel1 = new HomeModel(DrawSmallIconActivity.class, ResUtils.getString(R.string.draw_small_icon));
         list.add(homeModel1);
