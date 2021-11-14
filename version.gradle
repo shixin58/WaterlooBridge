@@ -1,0 +1,9 @@
+ext {
+    constraintlayout_version = '2.0.4'
+    appcompat_version = '1.2.0'
+    material_version = '1.2.1'
+    flexbox_version = "2.0.1"
+    glide_version = "4.11.0"
+    leakcanary_version = "2.7"
+    butterknife_version = "10.1.0"
+}

@@ -45,7 +45,7 @@ public class ViewPager2Activity extends BaseActivity implements ViewPager.OnPage
     private void initView() {
         RankingList2PagerAdapter pagerAdapter = new RankingList2PagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(pagerAdapter);
-        mViewPager.setOnPageChangeListener(this);
+        mViewPager.addOnPageChangeListener(this);
     }
 
     @OnClick({R.id.btn00, R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.btn05, R.id.btn06, R.id.btn07}) void onTabClick(View view) {
