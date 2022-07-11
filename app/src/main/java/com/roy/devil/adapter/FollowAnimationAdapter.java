@@ -13,10 +13,9 @@ import com.roy.devil.R;
  * <p>Created by shixin on 2018/2/8.
  */
 public class FollowAnimationAdapter extends BaseAdapter {
-
-    private String[] strings = new String[]{ResUtils.getString(R.string.dog), "cat", "tiger", "lion", "panda",
+    private final String[] strings = new String[]{ResUtils.getString(R.string.dog), "cat", "tiger", "lion", "panda",
             "lobster", "crab", "shellfish", "rat", "dragon fruit"};
-    private View.OnClickListener mOnClickListener;
+    private final View.OnClickListener mOnClickListener;
 
     public FollowAnimationAdapter(View.OnClickListener onClickListener) {
         mOnClickListener = onClickListener;
@@ -38,14 +37,26 @@ public class FollowAnimationAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        if(view==null) {
-            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_follow_animation, viewGroup, false);
+    public View getView(int i, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
+        if(convertView == null) {
+            // convertView复用提升性能。LayoutInflater简单工厂
+            convertView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.adapter_follow_animation, parent, false);
+            viewHolder = new ViewHolder();
+            viewHolder.textView = convertView.findViewById(R.id.tv_title);
+            viewHolder.flFollow = convertView.findViewById(R.id.flFollow);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
-        TextView textView = view.findViewById(R.id.tv_title);
-        textView.setText(strings[i]);
-        View flFollow = view.findViewById(R.id.flFollow);
-        flFollow.setOnClickListener(mOnClickListener);
-        return view;
+        viewHolder.textView.setText(strings[i]);
+        viewHolder.flFollow.setOnClickListener(mOnClickListener);
+        return convertView;
+    }
+
+    static class ViewHolder {
+        TextView textView;
+        View flFollow;
     }
 }

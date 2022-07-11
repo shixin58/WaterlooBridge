@@ -93,9 +93,7 @@ dependencies {
     implementation group: 'com.google.android.material', name: 'material', version: material_version
     implementation group: 'com.google.android', name: 'flexbox', version: flexbox_version
 
-    // 慕课网引用的是v8.5.1
     implementation group: 'com.jakewharton', name: 'butterknife', version: butterknife_version
-    // 源码参考https://github.com/JakeWharton/butterknife/blob/master/butterknife-compiler/src/main/java/butterknife/compiler/ButterKnifeProcessor.java
     annotationProcessor group: 'com.jakewharton', name: 'butterknife-compiler', version: butterknife_version
 
     implementation group: 'com.github.castorflex.verticalviewpager', name: 'library', version: '19.0.1'

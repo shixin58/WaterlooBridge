@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentManager;
  */
 public class ConcreteLazyFragmentPagerAdapter extends LazyFragmentPagerAdapter {
 
-    private List<Fragment> fragmentsList;
+    private final List<Fragment> fragmentsList;
 
     public ConcreteLazyFragmentPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
         super(fm);

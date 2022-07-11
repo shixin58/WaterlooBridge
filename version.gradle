@@ -5,5 +5,9 @@ ext {
     flexbox_version = "2.0.1"
     glide_version = "4.11.0"
     leakcanary_version = "2.7"
+
+    // 慕课网使用butterknife-v8.5.1
+    // 源码参考https://github.com/JakeWharton/butterknife
+    // Butter Knife已被View Binding取代
     butterknife_version = "10.1.0"
 }

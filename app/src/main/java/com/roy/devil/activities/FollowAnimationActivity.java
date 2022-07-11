@@ -33,7 +33,6 @@ import butterknife.ButterKnife;
  */
 public class FollowAnimationActivity extends BaseActivity implements View.OnClickListener,
         SwipeRefreshLayout.OnRefreshListener {
-
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.list_view)
@@ -45,7 +44,7 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
     @BindView(R.id.iv_point)
     ImageView ivPoint;
 
-    private Handler handler = new Handler();
+    private final Handler handler = new Handler();
 
     public static void openActivity(Context context) {
         Intent intent = new Intent(context, FollowAnimationActivity.class);

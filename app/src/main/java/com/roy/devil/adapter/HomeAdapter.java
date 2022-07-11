@@ -3,7 +3,6 @@ package com.roy.devil.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +24,8 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> implements View.OnClickListener,
         View.OnLongClickListener {
-
-    private Context mContext;
-    private List<HomeModel> mList = new ArrayList<>();
+    private final Context mContext;
+    private final List<HomeModel> mList = new ArrayList<>();
 
     public HomeAdapter(Context context) {
         mContext = context;
@@ -36,7 +34,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     public void setList(List<HomeModel> list) {
         mList.clear();
         if(list!=null && !list.isEmpty()) {
-            this.mList = list;
+            this.mList.addAll(list);
         }
         notifyDataSetChanged();
     }

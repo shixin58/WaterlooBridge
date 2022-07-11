@@ -118,11 +118,11 @@ public class FollowAnimationUtils {
     // 小球抛出
     public static void throwBall(View flFollow, View rootInventory, final View ivPoint) {
         // 小球起点
-        int positionStart[] = new int[2];
+        int[] positionStart = new int[2];
         flFollow.getLocationInWindow(positionStart);
         Point startPoint = new Point(positionStart[0], (int) (positionStart[1]+24* DENSITY -10* DENSITY));
         // 小球终点
-        int positionEnd[] = new int[2];
+        int[] positionEnd = new int[2];
         rootInventory.getLocationInWindow(positionEnd);
         boolean buttonInventoryVisible = rootInventory.findViewById(R.id.button_inventory).getVisibility()== View.VISIBLE;
         Point endPoint = new Point(positionEnd[0]
@@ -133,7 +133,7 @@ public class FollowAnimationUtils {
         int pointY = startPoint.y - (int) (30* DENSITY);
         Point controlPoint = new Point(pointX, pointY);
 
-        // 类型估值算法
+        // 属性动画ValueAnimator对动画系统不识别的属性类型通过ofObject()创建，需要设置类型估值算法TypeEvaluator、并实现evaluate()。
         final ValueAnimator valueAnimator = ValueAnimator.ofObject(new BezierEvaluator(controlPoint), startPoint, endPoint);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -168,8 +168,9 @@ public class FollowAnimationUtils {
             public void onAnimationRepeat(Animator animation) {
             }
         });
-        valueAnimator.setStartDelay(100* MULTIPLE);
-        valueAnimator.setDuration(200* MULTIPLE);
+        valueAnimator.setStartDelay(100L * MULTIPLE);
+        valueAnimator.setDuration(200L * MULTIPLE);
+        // 默认AccelerateDecelerateInterpolator
         valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.start();
     }

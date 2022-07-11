@@ -28,7 +28,6 @@ import fr.castorflex.android.verticalviewpager.VerticalViewPager;
  * <p>Created by shixin on 2018/4/22.
  */
 public class ViewPagerActivity extends BaseActivity implements ViewPager.OnPageChangeListener{
-
     @BindView(R.id.horizontal_scrollview)
     HorizontalScrollView mHorizontalScrollView;
     @BindView(R.id.horizontal_radio_group)
@@ -80,6 +79,12 @@ public class ViewPagerActivity extends BaseActivity implements ViewPager.OnPageC
     private GestureDetector mGestureDetector = new GestureDetector(VictorApplication.getInstance(),
             new GestureDetector.SimpleOnGestureListener(){
         @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            Toast.makeText(ViewPagerActivity.this.getApplicationContext(), "fling", Toast.LENGTH_SHORT).show();
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
+
+        @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
             Toast.makeText(ViewPagerActivity.this.getApplicationContext(), "single tap", Toast.LENGTH_SHORT).show();
             return super.onSingleTapConfirmed(e);
@@ -89,12 +94,6 @@ public class ViewPagerActivity extends BaseActivity implements ViewPager.OnPageC
         public boolean onDoubleTap(MotionEvent e) {
             Toast.makeText(ViewPagerActivity.this.getApplicationContext(), "double tap", Toast.LENGTH_SHORT).show();
             return super.onDoubleTap(e);
-        }
-
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            Toast.makeText(ViewPagerActivity.this.getApplicationContext(), "fling", Toast.LENGTH_SHORT).show();
-            return super.onFling(e1, e2, velocityX, velocityY);
         }
     });
 }

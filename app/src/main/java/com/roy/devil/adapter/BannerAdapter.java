@@ -19,8 +19,8 @@ import androidx.viewpager.widget.PagerAdapter;
  * <p>Created by shixin on 2019/3/30.
  */
 public class BannerAdapter extends PagerAdapter {
-    private List<Integer> mList = new ArrayList<>();
-    private SparseArray<ImageView> mImageViews = new SparseArray<>();
+    private final List<Integer> mList = new ArrayList<>();
+    private final SparseArray<ImageView> mImageViews = new SparseArray<>();
 
     public void setList(List<Integer> list) {
         if (list != null && !list.isEmpty()) {

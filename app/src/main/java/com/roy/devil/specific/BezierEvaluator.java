@@ -7,8 +7,7 @@ import android.graphics.Point;
  * <p>Created by shixin on 2018/2/8.
  */
 public class BezierEvaluator implements TypeEvaluator<Point> {
-
-    private Point controlPoint;
+    private final Point controlPoint;
 
     public BezierEvaluator(Point controlPoint) {
         this.controlPoint = controlPoint;
