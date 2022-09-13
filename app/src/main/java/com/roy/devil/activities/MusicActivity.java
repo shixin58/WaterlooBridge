@@ -58,7 +58,7 @@ public class MusicActivity extends BaseActivity {
     private boolean mFlagPlay = false;
 
     private MusicService mMusicService;
-    private Timer mTimer = new Timer();
+    private final Timer mTimer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +141,7 @@ public class MusicActivity extends BaseActivity {
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
-    private ServiceConnection serviceConnection = new ServiceConnection() {
+    private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mMusicService = ((MusicService.MyBinder)service).getService();

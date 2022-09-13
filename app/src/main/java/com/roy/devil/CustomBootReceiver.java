@@ -17,15 +17,10 @@ public class CustomBootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         switch (intent.getAction()) {
-            case "com.roy.devil.action.MUSIC":
-                Toast.makeText(context, "com.roy.devil.action.MUSIC", Toast.LENGTH_SHORT).show();
-                Log.i(TAG, context+" com.roy.devil.action.MUSIC");
+            case "com.roy.devil.action.DAEMON":
+                // base为Application的ContextWrapper
+                Toast.makeText(context, "com.roy.devil.action.DAEMON", Toast.LENGTH_SHORT).show();
                 context.startService(new Intent(context, DaemonService.class));
-                break;
-            case "com.roy.devil.action.LOCAL":
-                Toast.makeText(context.getApplicationContext(), "com.roy.devil.action.LOCAL", Toast.LENGTH_SHORT).show();
-                Log.i(TAG, context.getApplicationContext()+" com.roy.devil.action.LOCAL");
-                context.getApplicationContext().startService(new Intent(context.getApplicationContext(), DaemonService.class));
                 break;
             case Intent.ACTION_BOOT_COMPLETED:
                 Toast.makeText(context, "Intent.ACTION_BOOT_COMPLETED", Toast.LENGTH_SHORT).show();

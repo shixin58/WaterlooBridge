@@ -35,7 +35,7 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     private MediaPlayer mMediaPlayer;
     private boolean loop = false;
 
-    private MyBinder binder = new MyBinder();
+    private final MyBinder binder = new MyBinder();
 
     @Override
     public void onPrepared(MediaPlayer mp) {

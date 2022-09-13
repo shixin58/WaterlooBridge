@@ -78,10 +78,10 @@
 
         <service android:name=".service.DaemonService"/>
 
-        <receiver android:name=".CustomBootReceiver">
+        <receiver android:name=".CustomBootReceiver"
+            android:exported="true">
             <intent-filter>
-                <action android:name="com.roy.devil.action.MUSIC"/>
-                <action android:name="com.roy.devil.action.LOCAL"/>
+                <action android:name="com.roy.devil.action.DAEMON"/>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.intent.action.USER_PRESENT"/>
                 <action android:name="android.intent.action.PACKAGE_RESTARTED"/>
