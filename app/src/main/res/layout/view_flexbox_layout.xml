@@ -2,6 +2,8 @@
 <!-- 购车信息banner -->
 <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:viewBindingIgnore="true"
     android:id="@+id/flexbox_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

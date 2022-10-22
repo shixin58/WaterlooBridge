@@ -10,4 +10,6 @@ ext {
     // 源码参考https://github.com/JakeWharton/butterknife
     // Butter Knife已被View Binding取代
     butterknife_version = "10.1.0"
+
+    kotlinx_coroutines_version = "1.4.1"
 }
