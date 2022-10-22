@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId "com.roy.devil"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion MIN_SDK_VERSION as int
+        targetSdkVersion TARGET_SDK_VERSION as int
         versionCode 1
         versionName "1.0"
     }
@@ -98,7 +98,7 @@ dependencies {
 
     implementation group: 'com.github.castorflex.verticalviewpager', name: 'library', version: '19.0.1'
 
-    debugImplementation group: 'com.squareup.leakcanary', name: 'leakcanary-android', version: leakcanary_version
+//    debugImplementation group: 'com.squareup.leakcanary', name: 'leakcanary-android', version: leakcanary_version
 
     implementation group: 'com.github.bumptech.glide', name: 'glide', version: glide_version
     annotationProcessor group: 'com.github.bumptech.glide', name: 'compiler', version: glide_version
