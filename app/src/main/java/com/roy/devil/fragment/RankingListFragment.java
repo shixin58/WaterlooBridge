@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bride.baselib.BaseFragment;
 import com.bride.baselib.ResUtils;
+import com.bride.ui_lib.BaseFragment;
 import com.roy.devil.R;
 
 import androidx.annotation.Nullable;

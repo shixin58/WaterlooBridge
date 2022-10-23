@@ -2,7 +2,7 @@ package com.roy.devil.activities;
 
 import android.os.Bundle;
 
-import com.bride.baselib.BaseActivity;
+import com.bride.ui_lib.BaseActivity;
 import com.roy.devil.R;
 import com.roy.devil.adapter.ConcreteLazyFragmentPagerAdapter;
 import com.roy.devil.fragment.LazyFragment;

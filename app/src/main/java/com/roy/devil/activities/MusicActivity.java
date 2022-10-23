@@ -17,8 +17,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bride.baselib.BaseActivity;
-import com.bride.baselib.widget.BaseRecyclerAdapter;
+import com.bride.ui_lib.BaseActivity;
+import com.bride.ui_lib.BaseRecyclerAdapter;
 import com.roy.devil.service.MusicService;
 import com.roy.devil.R;
 import com.roy.devil.adapter.MusicAdapter;

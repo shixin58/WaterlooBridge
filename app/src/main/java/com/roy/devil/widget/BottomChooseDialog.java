@@ -12,7 +12,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.bride.baselib.ResUtils;
-import com.bride.baselib.widget.BaseRecyclerAdapter;
+import com.bride.ui_lib.BaseRecyclerAdapter;
 import com.roy.devil.R;
 
 import java.util.ArrayList;
@@ -94,7 +94,7 @@ public class BottomChooseDialog extends Dialog {
             setList(list);
         }
 
-        void setList(List<String> list) {
+        public void setList(List<String> list) {
             if(list==null){
                 return;
             }

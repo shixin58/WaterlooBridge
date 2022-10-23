@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.bride.baselib.BaseActivity;
 import com.bride.baselib.PreferenceUtils;
 import com.bride.baselib.ResUtils;
-import com.bride.baselib.widget.BaseRecyclerAdapter;
+import com.bride.ui_lib.BaseActivity;
+import com.bride.ui_lib.BaseRecyclerAdapter;
 import com.roy.devil.R;
 import com.roy.devil.specific.WidgetUtils;
 import com.roy.devil.widget.BottomChooseDialog;

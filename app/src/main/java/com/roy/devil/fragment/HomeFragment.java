@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bride.baselib.BaseFragment;
+import com.bride.ui_lib.BaseFragment;
 import com.roy.devil.R;
 import com.roy.devil.adapter.HomeAdapter;
 import com.roy.devil.repository.HomeRepository;

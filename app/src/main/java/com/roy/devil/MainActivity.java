@@ -5,8 +5,8 @@ import android.os.Handler;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
-import com.bride.baselib.BaseActivity;
 import com.bride.baselib.PermissionUtils;
+import com.bride.ui_lib.BaseActivity;
 import com.roy.devil.fragment.HomeFragment;
 
 import androidx.annotation.NonNull;

@@ -9,7 +9,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.bride.baselib.BaseActivity;
+import com.bride.ui_lib.BaseActivity;
 import com.roy.devil.R;
 import com.roy.devil.VictorApplication;
 import com.roy.devil.adapter.RankingListPagerAdapter;

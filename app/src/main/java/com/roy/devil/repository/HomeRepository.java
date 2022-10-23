@@ -2,6 +2,7 @@ package com.roy.devil.repository;
 
 import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
+import com.roy.devil.activities.CameraxActivity;
 import com.roy.devil.activities.CustomWidgetActivity;
 import com.roy.devil.activities.DrawSmallIconActivity;
 import com.roy.devil.activities.FollowAnimationActivity;
@@ -39,6 +40,8 @@ public class HomeRepository {
         list.add(homeModel6);
         HomeModel homeModel7 = new HomeModel(ViewPager2Activity.class, ResUtils.getString(R.string.view_pager_2));
         list.add(homeModel7);
+        HomeModel homeModel8 = new HomeModel(CameraxActivity.class, ResUtils.getString(R.string.camerax));
+        list.add(homeModel8);
         return list;
     }
 }

@@ -19,8 +19,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bride.baselib.BaseActivity;
 import com.bride.baselib.ResUtils;
+import com.bride.ui_lib.BaseActivity;
 import com.roy.devil.R;
 
 /**

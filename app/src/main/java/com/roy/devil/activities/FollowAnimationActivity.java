@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.bride.baselib.BaseActivity;
+import com.bride.ui_lib.BaseActivity;
 import com.roy.devil.R;
 import com.roy.devil.adapter.FollowAnimationAdapter;
 import com.roy.devil.specific.FollowAnimationUtils;
@@ -33,6 +33,8 @@ import butterknife.ButterKnife;
  */
 public class FollowAnimationActivity extends BaseActivity implements View.OnClickListener,
         SwipeRefreshLayout.OnRefreshListener {
+    private static final String TAG = "FollowAnimationActivity";
+
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.list_view)
