@@ -107,8 +107,8 @@ dependencies {
     implementation group: 'com.google.android', name: 'flexbox', version: flexbox_version
 
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlin_version
-    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: kotlinx_coroutines_version
-    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: kotlinx_coroutines_version
+    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: coroutine_version
+    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: coroutine_version
 
     implementation group: 'com.jakewharton', name: 'butterknife', version: butterknife_version
     annotationProcessor group: 'com.jakewharton', name: 'butterknife-compiler', version: butterknife_version

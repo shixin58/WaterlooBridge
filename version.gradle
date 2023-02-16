@@ -14,7 +14,7 @@ ext {
     // Butter Knife已被View Binding取代
     butterknife_version = "10.1.0"
 
-    kotlinx_coroutines_version = "1.6.4"
+    coroutine_version = "1.6.4"
 
     camerax_version = "1.1.0"
 }
