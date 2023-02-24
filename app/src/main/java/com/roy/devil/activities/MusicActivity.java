@@ -12,13 +12,13 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bride.ui_lib.BaseActivity;
 import com.bride.ui_lib.BaseRecyclerAdapter;
+import com.roy.devil.databinding.ActivityMusicBinding;
 import com.roy.devil.service.MusicService;
 import com.roy.devil.R;
 import com.roy.devil.adapter.MusicAdapter;
@@ -31,9 +31,6 @@ import java.util.TimerTask;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * <p>Created by shixin on 2018/10/20.
@@ -42,18 +39,7 @@ public class MusicActivity extends BaseActivity {
     private static final String TAG = MusicActivity.class.getSimpleName();
     public static final String KEY_FROM = "from";
 
-    @BindView(R.id.recycler_view)
-    RecyclerView mRecyclerView;
-    @BindView(R.id.tv_empty)
-    TextView mTvEmpty;
-    @BindView(R.id.progress_bar)
-    ProgressBar mProgressBar;
-    @BindView(R.id.view_pointer)
-    View mViewPointer;
-    @BindView(R.id.seek_bar)
-    SeekBar mSeekBar;
-    @BindView(R.id.tv_play)
-    TextView mTvPlay;
+    private ActivityMusicBinding mBinding;
 
     private boolean mFlagPlay = false;
 
@@ -63,16 +49,10 @@ public class MusicActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_music);
-        ButterKnife.bind(this);
+        mBinding = ActivityMusicBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
         initData();
         initView();
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        // singleTop
     }
 
     private void initData() {
@@ -86,33 +66,34 @@ public class MusicActivity extends BaseActivity {
 
     private void initView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        mRecyclerView.setLayoutManager(layoutManager);
+
+        mBinding.recyclerView.setLayoutManager(layoutManager);
         MusicAdapter adapter = new MusicAdapter();
-        mRecyclerView.setAdapter(adapter);
+        mBinding.recyclerView.setAdapter(adapter);
 
         List<String> list = MusicRepository.getPathList();
-        if(list!=null && !list.isEmpty()) {
+        if (!list.isEmpty()) {
             adapter.setList(list);
             initService();
-        }else {
-            mTvEmpty.setVisibility(View.VISIBLE);
+        } else {
+            mBinding.tvEmpty.setVisibility(View.VISIBLE);
         }
         adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int i) {
                 mMusicService.play(i);
                 mFlagPlay = true;
-                mTvPlay.setText(R.string.play);
+                mBinding.tvPlay.setText(R.string.play);
             }
         });
-        mProgressBar.setOnLongClickListener(new View.OnLongClickListener() {
+        mBinding.progressBar.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 mMusicService.seek(750);
                 return true;
             }
         });
-        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        mBinding.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(fromUser) {
@@ -149,11 +130,11 @@ public class MusicActivity extends BaseActivity {
                 @Override
                 public void onSeekComplete(MediaPlayer mp) {
                     int progress = mMusicService.getPermillage();
-                    mProgressBar.setProgress(progress);
-                    ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) mViewPointer.getLayoutParams();
-                    lp.leftMargin = mProgressBar.getWidth() * progress / mProgressBar.getMax();
-                    mViewPointer.setLayoutParams(lp);
-                    mSeekBar.setProgress(mMusicService.getPermillage());
+                    mBinding.progressBar.setProgress(progress);
+                    ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) mBinding.viewPointer.getLayoutParams();
+                    lp.leftMargin = mBinding.progressBar.getWidth() * progress / mBinding.progressBar.getMax();
+                    mBinding.viewPointer.setLayoutParams(lp);
+                    mBinding.seekBar.setProgress(mMusicService.getPermillage());
                 }
             });
             mMusicService.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -162,10 +143,10 @@ public class MusicActivity extends BaseActivity {
                     if(mMusicService.isLoop()) {
                         mMusicService.next();
                         mFlagPlay = true;
-                        mTvPlay.setText(R.string.play);
+                        mBinding.tvPlay.setText(R.string.play);
                     }else {
                         mFlagPlay = false;
-                        mTvPlay.setText(R.string.pause);
+                        mBinding.tvPlay.setText(R.string.pause);
                     }
                 }
             });
@@ -174,15 +155,15 @@ public class MusicActivity extends BaseActivity {
                 public void run() {
                     if(!mMusicService.isPlaying()) return;
                     // 切换至UI线程
-                    mProgressBar.post(new Runnable() {
+                    mBinding.progressBar.post(new Runnable() {
                         @Override
                         public void run() {
                             int progress = mMusicService.getPermillage();
-                            mProgressBar.setProgress(progress);
-                            ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) mViewPointer.getLayoutParams();
-                            lp.leftMargin = mProgressBar.getWidth() * progress / mProgressBar.getMax();
-                            mViewPointer.setLayoutParams(lp);
-                            mSeekBar.setProgress(mMusicService.getPermillage());
+                            mBinding.progressBar.setProgress(progress);
+                            ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) mBinding.viewPointer.getLayoutParams();
+                            lp.leftMargin = mBinding.progressBar.getWidth() * progress / mBinding.progressBar.getMax();
+                            mBinding.viewPointer.setLayoutParams(lp);
+                            mBinding.seekBar.setProgress(mMusicService.getPermillage());
                         }
                     });
                 }
@@ -195,35 +176,35 @@ public class MusicActivity extends BaseActivity {
         }
     };
 
-    @OnClick(R.id.tv_play) void onPlayClick(View view) {
+    public void onPlayClick(View view) {
         Log.i(TAG, "onPlayClick");
         mMusicService.playOrPause();
         mFlagPlay = !mFlagPlay;
-        mTvPlay.setText(mFlagPlay ?R.string.play:R.string.pause);
+        mBinding.tvPlay.setText(mFlagPlay ?R.string.play:R.string.pause);
     }
 
-    @OnClick(R.id.tv_stop) void onStopClick(View view) {
+    public void onStopClick(View view) {
         Log.i(TAG, "onStopClick");
         mMusicService.stop();
         mFlagPlay = false;
-        mTvPlay.setText(R.string.pause);
+        mBinding.tvPlay.setText(R.string.pause);
     }
 
-    @OnClick(R.id.tv_previous) void onPreviousClick(View view) {
+    public void onPreviousClick(View view) {
         Log.i(TAG, "onPreviousClick");
         mMusicService.previous();
         mFlagPlay = true;
-        mTvPlay.setText(R.string.play);
+        mBinding.tvPlay.setText(R.string.play);
     }
 
-    @OnClick(R.id.tv_next) void onNextClick(View view) {
+    public void onNextClick(View view) {
         Log.i(TAG, "onNextClick");
         mMusicService.next();
         mFlagPlay = true;
-        mTvPlay.setText(R.string.play);
+        mBinding.tvPlay.setText(R.string.play);
     }
 
-    @OnClick(R.id.tv_loop) void onLoopClick(View view) {
+    public void onLoopClick(View view) {
         Log.i(TAG, "onLoopClick");
         boolean loop = mMusicService.isLoop();
         mMusicService.setLoop(loop=!loop);
@@ -231,7 +212,7 @@ public class MusicActivity extends BaseActivity {
         textView.setText(loop?R.string.loop:R.string.single_song);
     }
 
-    @OnClick(R.id.tv_empty) void onEmptyClick(View view) {
+    public void onEmptyClick(View view) {
         Log.i(TAG, "onEmptyClick");
     }
 

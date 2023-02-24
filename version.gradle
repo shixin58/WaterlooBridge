@@ -9,11 +9,6 @@ ext {
 
     leakcanary_version = "2.7"
 
-    // 慕课网使用butterknife-v8.5.1
-    // 源码参考https://github.com/JakeWharton/butterknife
-    // Butter Knife已被View Binding取代
-    butterknife_version = "10.1.0"
-
     coroutine_version = "1.6.4"
 
     camerax_version = "1.1.0"

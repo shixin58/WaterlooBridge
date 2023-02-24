@@ -12,9 +12,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AbsListView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -22,10 +19,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bride.ui_lib.BaseActivity;
 import com.roy.devil.R;
 import com.roy.devil.adapter.FollowAnimationAdapter;
+import com.roy.devil.databinding.ActivityFollowAnimationBinding;
 import com.roy.devil.specific.FollowAnimationUtils;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 关注动画
@@ -35,16 +30,7 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
         SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = "FollowAnimationActivity";
 
-    @BindView(R.id.swipeRefreshLayout)
-    SwipeRefreshLayout swipeRefreshLayout;
-    @BindView(R.id.list_view)
-    ListView listView;
-    @BindView(R.id.root_inventory)
-    View rootInventory;
-    @BindView(R.id.button_inventory)
-    TextView buttonInventory;
-    @BindView(R.id.iv_point)
-    ImageView ivPoint;
+    private ActivityFollowAnimationBinding mBinding;
 
     private final Handler handler = new Handler();
 
@@ -56,26 +42,24 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_follow_animation);
-        ButterKnife.bind(this);
+        mBinding = ActivityFollowAnimationBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
         initView();
     }
 
     private void initView() {
-        swipeRefreshLayout.setOnRefreshListener(this);
+        mBinding.swipeRefreshLayout.setOnRefreshListener(this);
         FollowAnimationAdapter followAnimationAdapter = new FollowAnimationAdapter(this);
-        listView.setAdapter(followAnimationAdapter);
-        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+        mBinding.listView.setAdapter(followAnimationAdapter);
+        mBinding.listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
                 switch (scrollState) {
-                    case SCROLL_STATE_TOUCH_SCROLL:
+                    case SCROLL_STATE_IDLE:
+                        FollowAnimationUtils.collapseInventory(mBinding.rootInventory, 0);
                         break;
                     case SCROLL_STATE_FLING:
-                        break;
-                    case SCROLL_STATE_IDLE:
-                        FollowAnimationUtils.collapseInventory(rootInventory, 0);
-                        break;
+                    case SCROLL_STATE_TOUCH_SCROLL:
                     default:
                         break;
                 }
@@ -85,53 +69,43 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
             }
         });
-        rootInventory.setOnClickListener(this);
-        FollowAnimationUtils.collapseInventory(rootInventory, 1200);
+        mBinding.rootInventory.setOnClickListener(this);
+        FollowAnimationUtils.collapseInventory(mBinding.rootInventory, 1200);
         setAnimation();
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.flFollow:
-                // 圆角矩形收缩成圆0.1s -> 小蓝球掉入清单0.2s
-                // 清单入口展开 -> 0.3s
-                FollowAnimationUtils.shrinkRoundRectangle(view);
-                FollowAnimationUtils.throwBall(view, rootInventory, ivPoint);
-                FollowAnimationUtils.expandInventory(rootInventory);
-                break;
-            case R.id.root_inventory:
-                if(buttonInventory.getVisibility()==View.GONE) {
-                    FollowAnimationUtils.expandInventory(rootInventory);
-                }else {
-                    HandlerThread handlerThread = new HandlerThread("Thread - Toast");
-                    handlerThread.start();
-                    Handler handler = new Handler(handlerThread.getLooper()) {
-                        @Override
-                        public void handleMessage(Message msg) {
-                            super.handleMessage(msg);
-                            switch (msg.what) {
-                                case 1:
-                                    Log.i(TAG, "handleMessage "+Thread.currentThread().getName());
-                                    Toast.makeText(FollowAnimationActivity.this.getApplicationContext(), "打开购物车", Toast.LENGTH_SHORT).show();
-                                    break;
-                            }
+        if (view.getId() == R.id.flFollow) {
+            // 圆角矩形收缩成圆0.1s -> 小蓝球掉入清单0.2s
+            // 清单入口展开 -> 0.3s
+            FollowAnimationUtils.shrinkRoundRectangle(view);
+            FollowAnimationUtils.throwBall(view, mBinding.rootInventory, mBinding.ivPoint);
+            FollowAnimationUtils.expandInventory(mBinding.rootInventory);
+        } else if (view.getId() == R.id.root_inventory) {
+            if (mBinding.buttonInventory.getVisibility() == View.GONE) {
+                FollowAnimationUtils.expandInventory(mBinding.rootInventory);
+            } else {
+                HandlerThread handlerThread = new HandlerThread("Thread - Toast");
+                handlerThread.start();
+                Handler handler = new Handler(handlerThread.getLooper()) {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        super.handleMessage(msg);
+                        if (msg.what == 1) {
+                            Log.i(TAG, "handleMessage " + Thread.currentThread().getName());
+                            Toast.makeText(FollowAnimationActivity.this.getApplicationContext(), "打开购物车", Toast.LENGTH_SHORT).show();
                         }
-                    };
-                    handler.sendEmptyMessage(1);
-                }
-                break;
+                    }
+                };
+                handler.sendEmptyMessage(1);
+            }
         }
     }
 
     @Override
     public void onRefresh() {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        }, 2000L);
+        handler.postDelayed(() -> mBinding.swipeRefreshLayout.setRefreshing(false), 2000L);
     }
 
     private void setAnimation() {
@@ -139,6 +113,6 @@ public class FollowAnimationActivity extends BaseActivity implements View.OnClic
         LayoutAnimationController layoutAnimationController = new LayoutAnimationController(animation);
         layoutAnimationController.setOrder(LayoutAnimationController.ORDER_NORMAL);
         layoutAnimationController.setDelay(0.5f);
-        listView.setLayoutAnimation(layoutAnimationController);
+        mBinding.listView.setLayoutAnimation(layoutAnimationController);
     }
 }

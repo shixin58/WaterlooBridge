@@ -99,26 +99,23 @@ static def buildTime() {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation group: 'androidx.appcompat', name: 'appcompat', version: appcompat_version
-    implementation group: 'androidx.cardview', name: 'cardview', version: '1.0.0'
-    implementation group: 'androidx.constraintlayout', name: 'constraintlayout', version: constraintlayout_version
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
 
-    implementation group: 'com.google.android.material', name: 'material', version: material_version
-    implementation group: 'com.google.android', name: 'flexbox', version: flexbox_version
+    implementation "com.google.android.material:material:$material_version"
+    implementation "com.google.android:flexbox:$flexbox_version"
 
-    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlin_version
-    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: coroutine_version
-    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: coroutine_version
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
 
-    implementation group: 'com.jakewharton', name: 'butterknife', version: butterknife_version
-    annotationProcessor group: 'com.jakewharton', name: 'butterknife-compiler', version: butterknife_version
+    implementation "com.github.castorflex.verticalviewpager:library:19.0.1"
 
-    implementation group: 'com.github.castorflex.verticalviewpager', name: 'library', version: '19.0.1'
+//    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
 
-//    debugImplementation group: 'com.squareup.leakcanary', name: 'leakcanary-android', version: leakcanary_version
-
-    implementation group: 'com.github.bumptech.glide', name: 'glide', version: glide_version
-    annotationProcessor group: 'com.github.bumptech.glide', name: 'compiler', version: glide_version
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
     implementation "androidx.camera:camera-core:${camerax_version}"
     implementation "androidx.camera:camera-camera2:${camerax_version}"

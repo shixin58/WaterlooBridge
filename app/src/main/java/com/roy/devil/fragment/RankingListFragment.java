@@ -7,11 +7,11 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.bride.baselib.ResUtils;
 import com.bride.ui_lib.BaseFragment;
 import com.roy.devil.R;
+import com.roy.devil.databinding.FragmentRankingListBinding;
 
 import androidx.annotation.Nullable;
 
@@ -52,6 +52,8 @@ public class RankingListFragment extends BaseFragment {
          CAR_LEVEL_NAMES.append(CAR_LEVEL_MPV, ResUtils.getString(R.string.car_level_mpv));
     }
 
+    private FragmentRankingListBinding mBinding;
+
     private int mCarLevel;
 
     public static RankingListFragment newInstance(int carLevel) {
@@ -79,7 +81,8 @@ public class RankingListFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView - "+mCarLevel);
-        return inflater.inflate(R.layout.fragment_ranking_list, container, false);
+        mBinding = FragmentRankingListBinding.inflate(inflater, container, false);
+        return mBinding.getRoot();
     }
 
     @Override
@@ -94,8 +97,7 @@ public class RankingListFragment extends BaseFragment {
         Log.i(TAG, "onViewCreated - "+mCarLevel);
 
         String carLevelName = CAR_LEVEL_NAMES.get(mCarLevel);
-        TextView tvCarLevel = view.findViewById(R.id.tv_car_level);
-        tvCarLevel.setText(carLevelName);
+        mBinding.tvCarLevel.setText(carLevelName);
     }
 
     @Override

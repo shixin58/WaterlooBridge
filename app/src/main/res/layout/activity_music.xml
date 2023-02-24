@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:viewBindingIgnore="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activities.MusicActivity">
 
     <TextView
         android:id="@+id/tv_play"
@@ -15,6 +15,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tv_stop"
         app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onPlayClick"
         android:gravity="center"
         android:text="@string/pause"
         tools:text="@string/play"/>
@@ -27,6 +28,7 @@
         app:layout_constraintLeft_toRightOf="@id/tv_play"
         app:layout_constraintRight_toLeftOf="@id/tv_previous"
         app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onStopClick"
         android:gravity="center"
         android:text="停止"/>
 
@@ -38,6 +40,7 @@
         app:layout_constraintLeft_toRightOf="@id/tv_stop"
         app:layout_constraintRight_toLeftOf="@id/tv_next"
         app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onPreviousClick"
         android:gravity="center"
         android:text="上一首"/>
 
@@ -49,6 +52,7 @@
         app:layout_constraintLeft_toRightOf="@id/tv_previous"
         app:layout_constraintRight_toLeftOf="@id/tv_loop"
         app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onNextClick"
         android:gravity="center"
         android:text="下一首"/>
 
@@ -60,6 +64,7 @@
         app:layout_constraintLeft_toRightOf="@id/tv_next"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onLoopClick"
         android:gravity="center"
         android:text="@string/single_song"/>
 
@@ -142,6 +147,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="onEmptyClick"
         android:background="@android:color/white"
         android:visibility="gone"
         android:gravity="center"

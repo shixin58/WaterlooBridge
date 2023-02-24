@@ -6,26 +6,27 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.bride.ui_lib.BaseFragment;
 import com.roy.devil.R;
+import com.roy.devil.databinding.FragmentLazyBinding;
 import com.roy.devil.widget.LazyFragmentPagerAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * <p>Created by shixin on 2018/6/4.
  */
-public class LazyFragment extends BaseFragment implements LazyFragmentPagerAdapter.Deferrable {
+public class LazyFragment extends BaseFragment implements LazyFragmentPagerAdapter.Deferrable,
+        View.OnClickListener {
     private static final String TAG = LazyFragment.class.getSimpleName();
 
     private static final String TAG_BLANK = "tag_blank";
+
+    private FragmentLazyBinding mBinding;
 
     private int mPosition = -1;
 
@@ -56,32 +57,24 @@ public class LazyFragment extends BaseFragment implements LazyFragmentPagerAdapt
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_lazy, container, false);
-        ButterKnife.bind(this, view);
+        mBinding = FragmentLazyBinding.inflate(inflater, container, false);
         Log.i(TAG, "onCreateView "+mPosition);
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.i(TAG, "onActivityCreated "+mPosition);
-        initData();
-        initView();
+        return mBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.i(TAG, "onViewCreated "+mPosition);
+        initData();
+        initView();
     }
 
-    private void initData() {
-    }
+    private void initData() {}
 
     private void initView() {
-        TextView tvPosition = getView().findViewById(R.id.tv_page);
-        tvPosition.setText("No."+mPosition);
+        mBinding.tvPage.setText("No." + mPosition);
+        mBinding.tvPage.setOnClickListener(this);
     }
 
     @Override
@@ -144,7 +137,8 @@ public class LazyFragment extends BaseFragment implements LazyFragmentPagerAdapt
         Log.i(TAG, mPosition+" onHiddenChanged - "+hidden);
     }
 
-    @OnClick(R.id.tv_page) void onPositionClick() {
+    @Override
+    public void onClick(View view) {
         Fragment fragment = getChildFragmentManager().findFragmentByTag(TAG_BLANK+"_"+mPosition);
         if(fragment != null && !fragment.isRemoving()) {
             FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
