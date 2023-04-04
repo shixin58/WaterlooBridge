@@ -11,3 +11,7 @@
 - CardView和FlexboxLayout
 
 - Canvas和Bitmap
+
+- .gradle.kts
+
+- CameraX
