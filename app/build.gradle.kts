@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    alias(libs.plugins.android.application)
     id("kotlin-android")
     id("kotlin-parcelize")
     id("kotlin-kapt")
@@ -43,12 +43,11 @@ android {
 
 dependencies {
     implementation (fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
-    implementation ("androidx.appcompat:appcompat:1.6.1")
-    implementation ("androidx.cardview:cardview:1.0.0")
-    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation (libs.androidx.appcompat)
+    implementation (libs.androidx.constraintlayout)
 
-    implementation ("com.google.android.material:material:1.8.0")
-    implementation ("com.google.android.flexbox:flexbox:3.0.0")
+    implementation (libs.material)
+    implementation (libs.flexbox)
 
     implementation ("org.jetbrains.kotlin:kotlin-reflect:1.8.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")

@@ -1,0 +1,18 @@
+[versions]
+androidGradlePlugin = "7.4.2"
+kotlin = "1.8.0"
+material = "1.8.0"
+flexbox = "3.0.0"
+appcompat = "1.6.1"
+constraintLayout = "2.1.4"
+
+[libraries]
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+flexbox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "flexbox" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintLayout" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-gradle-plugin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
