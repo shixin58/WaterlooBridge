@@ -1,13 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
-    id("kotlin-android")
+    alias(libs.plugins.kotlin.gradle.plugin)
     id("kotlin-parcelize")
     id("kotlin-kapt")
 }
 
 android {
     compileSdk = 33
-    buildToolsVersion = "30.0.3"
+    buildToolsVersion = "33.0.2"
+    namespace = "com.roy.devil"
 
     defaultConfig {
         applicationId = "com.roy.devil"
@@ -34,8 +35,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        jvmToolchain(11)
     }
 
     ndkVersion = "24.0.8215888"
@@ -56,7 +57,7 @@ dependencies {
     implementation ("com.github.castorflex.verticalviewpager:library:19.0.1")
 
     implementation ("com.github.bumptech.glide:glide:4.14.2")
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")
+    kapt ("com.github.bumptech.glide:compiler:4.14.2")
 
     implementation ("androidx.camera:camera-core:1.2.2")
     implementation ("androidx.camera:camera-camera2:1.2.2")
