@@ -19,7 +19,8 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
@@ -35,6 +36,10 @@ android {
     }
 
     ndkVersion = "24.0.8215888"
+
+    androidResources {
+        additionalParameters.add("--warn-manifest-validation")
+    }
 }
 
 dependencies {
