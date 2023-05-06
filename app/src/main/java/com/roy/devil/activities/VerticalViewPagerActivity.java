@@ -1,39 +1,44 @@
 package com.roy.devil.activities;
 
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RadioButton;
-
-import androidx.viewpager.widget.ViewPager;
+import android.widget.Toast;
 
 import com.bride.ui_lib.BaseActivity;
-import com.roy.devil.adapter.RankingList2PagerAdapter;
-import com.roy.devil.databinding.ActivityViewPager2Binding;
+import com.roy.devil.VictorApplication;
+import com.roy.devil.adapter.RankingListPagerAdapter;
+import com.roy.devil.databinding.ActivityVerticalViewPagerBinding;
 import com.roy.devil.specific.WidgetUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.viewpager.widget.ViewPager;
+
 /**
  * <p>Created by shixin on 2018/4/22.
  */
-public class ViewPager2Activity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
-    private ActivityViewPager2Binding mBinding;
+public class VerticalViewPagerActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
+    private ActivityVerticalViewPagerBinding mBinding;
 
     List<RadioButton> mRadioButtons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = ActivityViewPager2Binding.inflate(getLayoutInflater());
+        mBinding = ActivityVerticalViewPagerBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
         initView();
     }
 
     private void initView() {
-        RankingList2PagerAdapter pagerAdapter = new RankingList2PagerAdapter(getSupportFragmentManager());
+        RankingListPagerAdapter pagerAdapter = new RankingListPagerAdapter(getSupportFragmentManager());
         mBinding.viewPager.setAdapter(pagerAdapter);
-        mBinding.viewPager.addOnPageChangeListener(this);
+        mBinding.viewPager.setOnPageChangeListener(this);
+        mBinding.viewPager.setOnTouchListener((v, event) -> mGestureDetector.onTouchEvent(event));
 
         mRadioButtons = new ArrayList<>(8);
         mRadioButtons.add(mBinding.horizontalScrollview.btn00);
@@ -66,4 +71,25 @@ public class ViewPager2Activity extends BaseActivity implements ViewPager.OnPage
 
     @Override
     public void onPageScrollStateChanged(int state) {}
+
+    private final GestureDetector mGestureDetector = new GestureDetector(VictorApplication.getInstance(),
+            new GestureDetector.SimpleOnGestureListener(){
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            Toast.makeText(VerticalViewPagerActivity.this.getApplicationContext(), "fling", Toast.LENGTH_SHORT).show();
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
+
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+            Toast.makeText(VerticalViewPagerActivity.this.getApplicationContext(), "single tap", Toast.LENGTH_SHORT).show();
+            return super.onSingleTapConfirmed(e);
+        }
+
+        @Override
+        public boolean onDoubleTap(MotionEvent e) {
+            Toast.makeText(VerticalViewPagerActivity.this.getApplicationContext(), "double tap", Toast.LENGTH_SHORT).show();
+            return super.onDoubleTap(e);
+        }
+    });
 }

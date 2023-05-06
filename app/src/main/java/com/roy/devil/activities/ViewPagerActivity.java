@@ -1,22 +1,18 @@
 package com.roy.devil.activities;
 
 import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RadioButton;
-import android.widget.Toast;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.bride.ui_lib.BaseActivity;
-import com.roy.devil.VictorApplication;
-import com.roy.devil.adapter.RankingListPagerAdapter;
+import com.roy.devil.adapter.RankingList2PagerAdapter;
 import com.roy.devil.databinding.ActivityViewPagerBinding;
 import com.roy.devil.specific.WidgetUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.viewpager.widget.ViewPager;
 
 /**
  * <p>Created by shixin on 2018/4/22.
@@ -35,10 +31,9 @@ public class ViewPagerActivity extends BaseActivity implements ViewPager.OnPageC
     }
 
     private void initView() {
-        RankingListPagerAdapter pagerAdapter = new RankingListPagerAdapter(getSupportFragmentManager());
+        RankingList2PagerAdapter pagerAdapter = new RankingList2PagerAdapter(getSupportFragmentManager());
         mBinding.viewPager.setAdapter(pagerAdapter);
-        mBinding.viewPager.setOnPageChangeListener(this);
-        mBinding.viewPager.setOnTouchListener((v, event) -> mGestureDetector.onTouchEvent(event));
+        mBinding.viewPager.addOnPageChangeListener(this);
 
         mRadioButtons = new ArrayList<>(8);
         mRadioButtons.add(mBinding.horizontalScrollview.btn00);
@@ -71,25 +66,4 @@ public class ViewPagerActivity extends BaseActivity implements ViewPager.OnPageC
 
     @Override
     public void onPageScrollStateChanged(int state) {}
-
-    private final GestureDetector mGestureDetector = new GestureDetector(VictorApplication.getInstance(),
-            new GestureDetector.SimpleOnGestureListener(){
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            Toast.makeText(ViewPagerActivity.this.getApplicationContext(), "fling", Toast.LENGTH_SHORT).show();
-            return super.onFling(e1, e2, velocityX, velocityY);
-        }
-
-        @Override
-        public boolean onSingleTapConfirmed(MotionEvent e) {
-            Toast.makeText(ViewPagerActivity.this.getApplicationContext(), "single tap", Toast.LENGTH_SHORT).show();
-            return super.onSingleTapConfirmed(e);
-        }
-
-        @Override
-        public boolean onDoubleTap(MotionEvent e) {
-            Toast.makeText(ViewPagerActivity.this.getApplicationContext(), "double tap", Toast.LENGTH_SHORT).show();
-            return super.onDoubleTap(e);
-        }
-    });
 }

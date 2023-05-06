@@ -5,8 +5,8 @@
     <string name="draw_small_icon" translatable="false">绘制小icon</string>
     <string name="custom_widget" translatable="false">自定义widget</string>
     <string name="popup_layer" translatable="false">弹窗</string>
+    <string name="vertical_view_pager" translatable="false">VerticalViewPager</string>
     <string name="view_pager" translatable="false">ViewPager</string>
-    <string name="view_pager_2" translatable="false">ViewPager2</string>
     <string name="lazy_view_pager" translatable="false">LazyViewPager</string>
     <string name="music" translatable="false">Music</string>
     <string name="camerax" translatable="false">CameraX</string>

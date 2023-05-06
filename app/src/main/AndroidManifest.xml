@@ -56,13 +56,13 @@
         <activity android:name=".widget.PrivacyPolicyDialog"
             android:theme="@style/dialog_appCompat"/>
 
-        <activity android:name=".activities.ViewPagerActivity"
+        <activity android:name=".activities.VerticalViewPagerActivity"
             android:screenOrientation="portrait"
-            android:label="@string/view_pager"/>
+            android:label="@string/vertical_view_pager"/>
 
-        <activity android:name=".activities.ViewPager2Activity"
+        <activity android:name=".activities.ViewPagerActivity"
             android:launchMode="singleTask"
-            android:label="@string/view_pager_2"/>
+            android:label="@string/view_pager"/>
 
         <activity android:name=".activities.LazyViewPagerActivity"
             android:screenOrientation="portrait"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ViewPager2Activity">
+    tools:context=".activities.VerticalViewPagerActivity">
 
     <include layout="@layout/view_car_level_tabs"
         android:id="@+id/horizontal_scrollview"
@@ -14,7 +14,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.viewpager.widget.ViewPager
+    <fr.castorflex.android.verticalviewpager.VerticalViewPager
         android:id="@+id/view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
