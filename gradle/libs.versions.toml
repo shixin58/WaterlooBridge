@@ -1,5 +1,5 @@
 [versions]
-androidGradlePlugin = "8.0.0"
+androidGradlePlugin = "8.0.1"
 kotlin = "1.8.20"
 material = "1.8.0"
 flexbox = "3.0.0"
@@ -31,4 +31,6 @@ verticalviewpager = { group = "com.github.castorflex.verticalviewpager", name = 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
-kotlin-gradle-plugin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }

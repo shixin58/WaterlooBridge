@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application) apply false
+    id(libs.plugins.android.application.get().pluginId) version libs.versions.androidGradlePlugin apply false
     alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.kotlin.gradle.plugin) apply false
+    alias(libs.plugins.kotlin.android) apply false
 }
