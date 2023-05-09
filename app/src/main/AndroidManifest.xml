@@ -56,9 +56,9 @@
         <activity android:name=".widget.PrivacyPolicyDialog"
             android:theme="@style/dialog_appCompat"/>
 
-        <activity android:name=".activities.VerticalViewPagerActivity"
+        <activity android:name=".activities.ViewPager2Activity"
             android:screenOrientation="portrait"
-            android:label="@string/vertical_view_pager"/>
+            android:label="@string/view_pager2"/>
 
         <activity android:name=".activities.ViewPagerActivity"
             android:launchMode="singleTask"

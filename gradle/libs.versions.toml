@@ -8,7 +8,7 @@ constraintLayout = "2.1.4"
 camerax = "1.2.2"
 coroutines = "1.6.4"
 glide = "4.15.1"
-verticalViewpager = "19.0.1"
+swiperefreshlayout = "1.1.0"
 
 [libraries]
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
@@ -26,7 +26,7 @@ kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-cor
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
-verticalviewpager = { group = "com.github.castorflex.verticalviewpager", name = "library", version.ref = "verticalViewpager" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

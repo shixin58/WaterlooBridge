@@ -10,7 +10,7 @@ import com.roy.devil.activities.LazyViewPagerActivity;
 import com.roy.devil.activities.MusicActivity;
 import com.roy.devil.activities.PopupLayerActivity;
 import com.roy.devil.activities.ViewPagerActivity;
-import com.roy.devil.activities.VerticalViewPagerActivity;
+import com.roy.devil.activities.ViewPager2Activity;
 import com.roy.devil.model.HomeModel;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class HomeRepository {
         list.add(homeModel2);
         HomeModel homeModel3 = new HomeModel(PopupLayerActivity.class, ResUtils.getString(R.string.popup_layer));
         list.add(homeModel3);
-        HomeModel homeModel4 = new HomeModel(VerticalViewPagerActivity.class, ResUtils.getString(R.string.vertical_view_pager));
+        HomeModel homeModel4 = new HomeModel(ViewPager2Activity.class, ResUtils.getString(R.string.view_pager2));
         list.add(homeModel4);
         HomeModel homeModel5 = new HomeModel(LazyViewPagerActivity.class, ResUtils.getString(R.string.lazy_view_pager));
         list.add(homeModel5);

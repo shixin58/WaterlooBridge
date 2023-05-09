@@ -54,7 +54,7 @@ dependencies {
     implementation (libs.kotlinx.coroutines.core)
     implementation (libs.kotlinx.coroutines.android)
 
-    implementation (libs.verticalviewpager)
+    implementation(libs.androidx.swiperefreshlayout)
 
     implementation (libs.glide)
     kapt (libs.glide.compiler)
