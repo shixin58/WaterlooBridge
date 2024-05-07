@@ -10,6 +10,7 @@
     <string name="lazy_view_pager" translatable="false">LazyViewPager</string>
     <string name="music" translatable="false">Music</string>
     <string name="camerax" translatable="false">CameraX</string>
+    <string name="bluetooth" translatable="false">Bluetooth</string>
 
     <string name="desc_follow_animation" translatable="false">FollowAnimationActivity: Animation/Animator贝塞尔曲线动画, ListView/SwipeRefreshLayout - 下拉刷新, LayoutAnimationController - ViewGroup动画</string>
 

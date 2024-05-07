@@ -73,8 +73,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     public boolean onLongClick(View v) {
         if (v.getTag() instanceof HomeModel) {
             HomeModel model = (HomeModel) v.getTag();
-            if (!TextUtils.isEmpty(model.desc)) {
-                Snackbar snackbar = Snackbar.make(v, model.desc, Snackbar.LENGTH_INDEFINITE);
+            if (!TextUtils.isEmpty(model.desc) || !TextUtils.isEmpty(model.showName)) {
+                String text = !TextUtils.isEmpty(model.desc) ? model.desc : model.showName;
+                Snackbar snackbar = Snackbar.make(v, text, Snackbar.LENGTH_INDEFINITE);
                 snackbar.setAction(R.string.undo, v1 -> {
                     Toast.makeText(v1.getContext(), "undo", Toast.LENGTH_SHORT).show();
                 });

@@ -13,6 +13,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application
         android:name=".VictorApplication"
         android:allowBackup="true"
@@ -88,6 +91,9 @@
         <activity android:name=".activities.CameraxActivity"
             android:screenOrientation="portrait"
             android:label="@string/camerax"/>
+
+        <activity android:name=".activities.BluetoothActivity"
+            android:label="@string/bluetooth"/>
 
         <service android:name=".service.MusicService"/>
 

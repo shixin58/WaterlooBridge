@@ -2,6 +2,7 @@ package com.roy.devil.repository;
 
 import com.bride.baselib.ResUtils;
 import com.roy.devil.R;
+import com.roy.devil.activities.BluetoothActivity;
 import com.roy.devil.activities.CameraxActivity;
 import com.roy.devil.activities.CustomWidgetActivity;
 import com.roy.devil.activities.DrawSmallIconActivity;
@@ -42,6 +43,8 @@ public class HomeRepository {
         list.add(homeModel7);
         HomeModel homeModel8 = new HomeModel(CameraxActivity.class, ResUtils.getString(R.string.camerax));
         list.add(homeModel8);
+        HomeModel homeModel9 = new HomeModel(BluetoothActivity.class, ResUtils.getString(R.string.bluetooth));
+        list.add(homeModel9);
         return list;
     }
 }
